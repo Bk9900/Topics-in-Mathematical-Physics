@@ -478,4 +478,194 @@
 		\item The analogous construction in pseudo-Riemannian geometry (c.f. GR) is defined by the metric tensor: an inner product on $V$
 		\item This means that for any symplectic manifold $(M,\omega)$, there is a musical isomorphism $T_{x}M\equiv T_{x}^{*}M$ for every $x\in M$, which induces a musical isomorphism between vector fields and 1-forms on $M$
 	\end{itemize}
+	\subsection{Hamiltonian Vector Fields and Flows}
+	\begin{itemize}
+		\item Given arbitrary \textbf{Hamiltonian function} $H\in C^{\infty}(M)$, the vector field $X_{H}=(dH)^{\sharp}\in\mathfrak{X}(M)$ is the \textbf{Hamiltonian vector field}
+		\item The set of all such vector fields is denoted $Ham(M)$
+		\item Equivalently, by the musical isomorphism, we have
+		\begin{equation}
+			X_{H}^{\flat}=dH\implies X_{H}^{\flat}(\eta)=\omega(\eta,X_{H})=-\omega(X_{H},\eta)=-(\iota_{X_{H}}\omega)(\eta)
+		\end{equation}
+		\item Therefore, $X_{{H}}$ is Hamiltonian if and only if
+		\begin{equation}
+			\iota_{X_{H}}\omega=-dH
+		\end{equation}
+		\item Just as a reminder, $\iota_{X}$ denotes the interior derivative of a $k$-form with respect to $X$, defined as contraction with $X$ in the first argument
+		\item In a coordinate basis $\{\partial_{a}\,:\,a=1,\ldots,2n\}$, we find components
+		\begin{equation}
+			(\iota_{X_{H}}\omega)_{a}=\omega_{ab}X_{H}^{a}=-\omega_{ab}X_{H}^{b}=(-dH)_{a}=-\partial_{a}H\implies \omega_{ab}X_{H}^{b}=\partial_{a}H
+		\end{equation}
+		\item Equivalently:
+		\begin{equation}
+			X_{H}^{a}=\omega^{ab}\partial_{b}H
+		\end{equation}
+		\item \textbf{Example:} consider symplectic manifold $(\mathbb{R}^{2n},\omega)$ with coordinates $(p_{i},q_{i})$ and symplectic form $\omega=dp_{i}\wedge dq_{i}$
+		\begin{itemize}
+			\item Pick some $H\in C^{\infty}(\mathbb{R}^{2n})$, and we compute the integral curves $\gamma(t)$ of $X_{H}$
+			\item Recall integral curves are defined by
+			\begin{equation}
+				\dot{\gamma}(t)=X_{H}(\gamma(t))=X_{H}\vert_{\gamma(t)}
+			\end{equation}
+			\item In our defining chart $(p_{i},q_{i})$, we have
+			\begin{equation}
+				\dot{\gamma}(t)=\dot{p}_{i}\frac{\partial}{\partial p_{i}}+\dot{q}_{i}\frac{\partial}{\partial q_{i}}
+			\end{equation}
+			along the curve, where we slightly abuse notation to write $\dot{p}_{i}=\frac{d}{dt}p_{i}(\gamma(t))$ etc.
+			\item Therefore, along the curve we must have
+			\begin{equation}
+				\iota_{X_{H}}\omega\vert_{\gamma(t)}=(dp_{i}\wedge dq_{i})(X_{H}(\gamma(t)))=dp_{i}(\dot{\gamma})dq_{i}-dq_{i}(\dot{\gamma})dp_{i}=\dot{p}_{i}dq_{i}-\dot{q}_{i}dp_{i}
+			\end{equation}
+			\item We also have by definition:
+			\begin{equation}
+				dH=\frac{dH}{dp_{i}}dp_{i}+\frac{dH}{dq_{i}}dq_{i}
+			\end{equation}
+			\item So by comparison, we deduce Hamilton's equations from purely geometric principles:
+			\begin{equation}
+				\dot{p}_{i}=-\frac{dH}{dq_{i}},\quad\dot{q}_{i}=\frac{dH}{dp_{i}}
+			\end{equation}
+		\end{itemize}
+		\item This is a new way of looking at Hamilton's equations: solving them is equivalent to finding the integral curves of a certain vector field in phase space
+		\item Now recall: integral curves of a complete vector field $X\in\mathfrak{X}(M)$ are in bijection with a one-parameter family of diffeomorphisms $\phi_{t}\,:\,M\to M,\,t\in \mathbb{R}$ satisfying composition law $\phi_{t+s}=\phi_{t}\circ\phi_{s}$ called \textbf{flows}
+		\item Given flow $\phi_{t}$, the corresponding vector field $X$ can be reconstructed:
+		\begin{equation}
+			X_{x}(f)=\left.\frac{d}{dt}f(\phi_{t}(x))\right\rvert_{t=0}\,\forall x\in M,\,f\in C^{\infty}(M)
+		\end{equation}
+		\item A \textbf{Hamiltonian flow} is the flow of a complete Hamiltonian vector field $X_{H}\in Ham(M)$
+		\item A \textbf{Hamiltonian system} $(M,\omega;H)$ is a symplectic manifold $(M,\omega)$ with a chosen function $H\in C^{\infty}(M)$
+		\item Time-evolution of a Hamiltonian system is defined by the Hamiltonian flow of $X_{H}$
+		\item \textbf{Lemma:} for $H\in C^{\infty}(M)$ and $X_{H}\in Ham(M)$, $\mathcal{L}_{X_{H}}\omega=0$ so Hamiltonian vector fields preserve the symplectic form
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Recall Cartan's magic identity for the Lie derivative of $k$-forms:
+			\begin{equation}
+				\mathcal{L}_{X_{H}}\omega=d\iota_{X_{H}}\omega+\iota_{X_{H}}d\omega=-d^{2}H=0\quad\blacksquare
+			\end{equation}
+		\end{itemize}
+		\item \textbf{Theorem:} let $\phi_{t}$ be a Hamiltonian flow on symplectic manifold $(M,\omega)$; then the symplectic form is preserved by the flow, $\phi^{*}_{t}\omega=\omega$
+		\begin{itemize}
+			\item At arbitrary $x\in M$, we have
+			\begin{equation}
+				\begin{aligned}
+					(\phi_{t}^{*}\omega-\omega)_{x}&=\int_{0}^{t}\frac{d}{du}(\phi_{u}^{*}\omega)_{x}\,du\\&=\left.\int_{0}^{t}\frac{d}{ds}\left(\phi^{*}_{u+s}\omega\right)_{x}\right\rvert_{s=0}\,du\quad\text{(chain rule)}\\&=\int_{0}^{t}\left(\left.\phi_{u}^{*}\frac{d}{ds}\phi^{*}_{s}\omega\right\rvert_{s=0}\right)_{x}\,du\\&=\int_{0}^{t}\phi_{u}^{*}(\mathcal{L}_{X_{H}}\omega)_{\phi_{u}(x)}\,du\\&=0
+				\end{aligned}
+			\end{equation}
+			\item The second last line comes from definition of the Lie derivative of a $k$-form:
+			\begin{equation}
+				\mathcal{L}_{X_{H}}\omega=\left.\frac{d}{dt}\phi_{t}^{*}\omega\right\rvert_{t=0}\quad\blacksquare
+			\end{equation}
+		\end{itemize}
+		\item \textbf{Corollary:} a Hamiltonian flow $\phi_{t}$ preserves any exterior power of the symplectic form; that is, $\phi_{t}^{*}\omega^{k}=\omega^{k}$
+		\item \textbf{Corollary:} (Liouville's theorem) a Hamiltonian flow $\phi_{t}$ preserves the volume form $\phi_{t}^{*}\omega^{n}=\omega^{n}$
+		\item This means that Hamiltonian flows preserve volumes in phase space
+		\item \textbf{Theorem:} the Hamiltonian function $H\in C^{\infty}(M)$ is preserved by Hamiltonian flow associated to $X_{H}\in Ham(M)$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item First, note
+			\begin{equation}
+				\mathcal{L}_{X_{H}}H=X_{H}(H)=dH(X_{H})=-(\iota_{X_{H}}\omega)(X_{H}))=-\omega(X_{H},X_{H})=0
+			\end{equation}
+			\item Then, by a similar argument to the last theorem, we are done $\blacksquare$
+		\end{itemize}
+		\item This result is essentially conservation of energy
+	\end{itemize}
+	\subsection{The Poisson Bracket}
+	\begin{itemize}
+		\item Given symplectic manifold $(M,\omega)$, we can define the \textbf{Poisson bracket} - a binary operation on $C^{\infty}(M)$
+		\item Specifically, given $f,g\in C^{\infty}(M)$, the Poisson bracket is
+		\begin{equation}
+			\left\{f,g\right\}=X_{g}(f)
+		\end{equation}
+		where $X_{g}$ is the Hamiltonian vector field associated with $g$
+		\item Alternatively, we can think of this as the rate of change of $f$ along the Hamiltonian flow $\phi_{t}$ of $g$:
+		\begin{equation}
+			\left\{f,g\right\}_{x}=\left.\frac{d}{dt}f(\phi_{t}(x))\right\rvert_{t=0},\;\forall x\in M
+		\end{equation}
+		\item This definition is appealing geometrically, but in practice it is more useful to rewrite by noticing the following:
+		\begin{equation}
+			X_{g}(f)=df(X_{g})=\iota_{X_{g}}df=-\iota_{X_{g}}\iota_{X_{f}}\omega=-\omega(X_{f},X_{g})
+		\end{equation}
+		and so
+		\begin{equation}
+			\{f,g\}=-\omega(X_{f},X_{g})
+		\end{equation}
+		\item This immediately implies that the Poisson bracket acts as $\{\cdot,\cdot\}\,:\,C^{\infty}(M)\to C^{\infty}(M)\to C^{\infty}(M)$, is $\mathbb{R}$\textit{-bilinear}, and is \textit{skew-symmetric}
+		\item Moreover, using the musical isomorphism, we notice
+		\begin{equation}
+			\omega^{\sharp}(df,dg)=-\omega\left((df)^{\sharp},(dg)^{\sharp}\right)=-\omega(X_{f},X_{g})=\{f,g\}
+		\end{equation} 
+		which implies the following lemma
+		\item \textbf{Lemma:} the Poisson bracket satisfies the \textit{Leibnitz rule}
+		\begin{equation}
+			\{f_{1}f_{2},g\}=f_{1}\{f_{2},g\}+\{f_{1},g\}f_{2}
+		\end{equation}
+		for all $f_{1},f_{2},g\in C^{\infty}(M)$
+		\item As always, to do more useful things with the Poisson bracket, we need to express it in a coordinate basis
+		\item Consider basis $e_{a}=\partial_{a}$ defined by chart $(x^{a})$, and the dual basis $f^{a}=dx^{a}$; then we find
+		\begin{equation}
+			\{f,g\}=\omega^{\sharp}\left(\partial_{a}f\,dx^{a},\partial_{b}g\,dx^{b}\right)=\omega^{ab}\partial_{a}f\partial_{b}g
+		\end{equation}
+		\item \textbf{Example:} we look again at $(M,\omega)=(\mathbb{R}^{2n},\omega)$ with coordinates $(p_{i},q_{i})$ so $\omega = dp_{i}\wedge dq_{i}$
+		\begin{itemize}
+			\item We know that in the $(\partial/\partial p_{i},\partial/\partial q_{i})$ basis
+			\begin{equation}
+				\omega_{ab}=\begin{pmatrix}0&I_{n}\\-I_{n}&0\end{pmatrix}\implies \omega^{ab}=\begin{pmatrix}0&-I_{n}\\I_{n}&0\end{pmatrix}
+			\end{equation}
+			\item Then, we find
+			\begin{equation}
+				\{f,g\}=\omega^{ab}\partial_{a}f\partial_{b}g=\frac{\partial f}{\partial q_{i}}\frac{\partial g}{\partial p_{i}}-\frac{\partial f}{\partial p_{i}}\frac{\partial g}{\partial q_{i}}
+			\end{equation}
+			which is the usual definition of it from classical dynamics
+		\end{itemize}
+		\item We also find that we can define the Poisson bracket for locally defined functions by just restricting the domain
+		\item \textbf{Example:} consider the example from a while back, where $Q$ is an $n$-dimensional smooth manifold with chart $(q_{i}(x))$ and the cotangent bundle $T^{*}Q=\{(p_{x},x)\,:\,p_{x}\in T^{*}_{x}Q,\,x\in Q\}$ is a $2n$-dimensional symplectic manifold with chart $(p_{i}(x),q_{i}(x))$ and $\omega=dp_{i}\wedge dq_{i}$
+		\begin{itemize}
+			\item The coordinates are functions defined only on the chart $U\subset M$
+			\item Then by the earlier example, we find the \textit{fundamental Poisson brackets}:
+			\begin{equation}
+				\{q_{i},q_{j}\}=\{p_{i},p_{j}\}=0,\quad\{q_{i},p_{j}\}=\delta_{ij}
+			\end{equation}
+		\end{itemize}
+		\item Now recall that the time-evolution of a Hamiltonian system $(M,\omega;H)$ is given by the flow $\phi_{t}$ of $X_{H}$
+		\item Therefore for a smooth function $f\in C^{\infty}(M)$, along the flow we find
+		\begin{equation}
+			\frac{d}{dt}\phi_{t}^{*}f=X_{H}(f)=\{f,H\}
+		\end{equation}
+		\item We usually write this in the shorthand
+		\begin{equation}
+			\frac{d}{dt}f=\{f,H\}
+		\end{equation}
+		\item We can define a \textbf{first integral/constant of motion} of $(M,\omega;H)$ is any function $f\in C^{\infty}(M)$ which is invariant under the flow of $X_{H}$; that is, $f$ is a constant of motion iff it Poisson commutes with $H$: $\{f,H\}=0$
+		\item \textbf{Theorem:} the Hamiltonian $H$ is preserved by the flow of $X_{f}\in Ham(M)$ if and only if $f\in C^{\infty}(M)$ is a constant of motion
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Note that
+			\begin{equation}
+				X_{f}(H)=\{H,f\}=-\{f,H\}
+			\end{equation}
+			and so $X_{f}(H)=0$ iff $\{f,H\}=0$ as required $\blacksquare$
+		\end{itemize}
+		\item This is just Noether's theorem in phase space
+		\item It turns out the Poisson bracket has a \textit{Lie algebra} structure; before we get to this, we need to first relate the Lie bracket of two Hamiltonian vector fields to their Poisson bracket
+		\item Recall the definition of the Lie bracket of two vector fields:
+		\begin{equation}
+			[X,Y](f)=X(Y(f))-Y(X(f)),\quad\forall f\in C^{\infty}(M)
+		\end{equation}
+		\item \textbf{Theorem:} let $X_{f}$ and $X_{g}$ be two Hamiltonian vector fields; then
+		\begin{equation}
+			\left[X_{f},X_{g}\right]=-X_{\{f,g\}}
+		\end{equation}
+		for $f,g \in C^{\infty}(M)$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Recall that $X_{H}$ is Hamiltonian if and only if there exists $H\in C^{\infty}(M)$ such that $\iota_{X_{H}}\omega=-dH$
+			\item Therefore, we compute
+			\begin{equation}
+				\begin{aligned}
+					\iota_{\left[X_{f},X_{g}\right]}\omega&=\left(\mathcal{L}_{X_{f}}\iota_{X_{g}}-\iota_{X_{g}}\mathcal{L}_{X_{f}}\right)\omega \qquad&\text{(Cartan identity)}\\
+					&=-\mathcal{L}_{X_{f}}dg\qquad&(\iota_{X_{g}}\omega=-dg \text{ and } \mathcal{L}_{X_{f}}\omega=0)\\&=-d\iota_{X_{f}}dg\qquad&\text{(Cartan's magic identity)}\\&=-d\left(X_{f}(g)\right)\qquad&\text{(by definition)}\\&=d\{f,g\}\qquad&\text{(by definition)}
+				\end{aligned}
+			\end{equation}
+			\item The proof then follows from the recalled definition of Hamiltonian vector fields and non-degeneracy of $\omega\;\blacksquare$
+		\end{itemize}
+	\end{itemize}
 \end{document}

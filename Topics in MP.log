@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.10.24)  26 JAN 2022 12:42
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.10.24)  3 FEB 2022 12:01
  restricted system commands enabled.
 **"Topics in MP.tex"
 ("./Topics in MP.tex"
@@ -1247,18 +1247,33 @@ LaTeX Warning: Command \o invalid in math mode on input line 410.
 
 Missing character: There is no ø (U+00F8) in font cmmi12!
 Missing character: There is no ø (U+00F8) in font cmmi12!
-[8] [9] [10] ("./Topics in MP.aux")
+[8] [9] [10]
+Overfull \hbox (3.25462pt too wide) in paragraph at lines 533--534
+[]\T1/lmr/m/n/12 A \T1/lmr/bx/n/12 Hamil-to-nian flow \T1/lmr/m/n/12 is the flow
+ of a com-plete Hamil-to-nian vec-tor field $\OML/cmm/m/it/12 X[] \OMS/cmsy/m/n
+/12 2 \OML/cmm/m/it/12 Ham\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M\OT1/cmr/m/n/12 )$
+  
+ []
+
+[11] [12]
+Overfull \hbox (5.91962pt too wide) in paragraph at lines 620--621
+[]\T1/lmr/bx/n/12 Ex-am-ple: \T1/lmr/m/n/12 con-sider the ex-am-ple from a while
+ back, where $\OML/cmm/m/it/12 Q$ \T1/lmr/m/n/12 is an $\OML/cmm/m/it/12 n$\T1/
+lmr/m/n/12 -dimensional smooth 
+ []
+
+[13] [14] ("./Topics in MP.aux")
 Package rerunfilecheck Info: File `"Topics in MP".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38317 strings out of 478106
+ 38353 strings out of 478106
  244180,1977958 words of node,token memory allocated
- 880 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 78 attribute, 73 glue_spec
-, 78 attribute_list, 2 write nodes
-   avail lists: 1:17,2:33114,3:32311,4:138,5:639,6:52,7:5658,8:63,9:725,10:4,11:
+ 1128 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 140 attribute, 73 glue_spe
+c, 140 attribute_list, 2 write nodes
+   avail lists: 1:17,2:32990,3:32311,4:138,5:649,6:52,7:5658,8:65,9:806,10:4,11:
 316
  57275 multiletter control sequences out of 65536+600000
  109 fonts using 8079823 bytes
@@ -1269,25 +1284,26 @@ sers/nebka/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users
 C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx
 8.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmex10.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmmi12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmi6.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/nebka/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/nebka/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/nebka/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/nebka/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/
-nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb
-><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
-<C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C
-:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/
-Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/U
-sers/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msa
-m10.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/symbols/msbm10.pfb>
-Output written on Topics in MP.pdf (10 pages, 304546 bytes).
+msfonts/cmextra/cmex8.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/nebka/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/nebka/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/nebka/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/nebka/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/neb
+ka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
+sers/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/eule
+r/eufm10.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmbx12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
+lmr12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+r17.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri
+12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/symbols/msam10.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/symbols/msbm10.pfb>
+Output written on Topics in MP.pdf (14 pages, 341327 bytes).
 
-PDF statistics: 195 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 131072)
+PDF statistics: 250 PDF objects out of 1000 (max. 8388607)
+ 93 named destinations out of 1000 (max. 131072)
  64 words of extra memory for PDF output out of 10000 (max. 100000000)
 
