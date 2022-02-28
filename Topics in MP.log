@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 22.1) (format=lualatex 2022.2.13)  22 FEB 2022 15:33
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 22.1) (format=lualatex 2022.2.13)  28 FEB 2022 19:17
  restricted system commands enabled.
 **"Topics in MP.tex"
 ("./Topics in MP.tex"
@@ -1340,20 +1340,20 @@ T1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )[][\OML/cmm/m/it/12 X; Y\OT
 1/cmr/m/n/12 ] = 
  []
 
-[24] [25] [26] [27] [28] ("./Topics in MP.aux")
+[24] [25] [26] [27] [28] [29] [30] ("./Topics in MP.aux")
 Package rerunfilecheck Info: File `"Topics in MP".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 )
 
 Here is how much of LuaTeX's memory you used:
- 39173 strings out of 477794
+ 39186 strings out of 477794
  244180,1977958 words of node,token memory allocated
- 1444 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 219 attribute, 73 glue_spe
-c, 219 attribute_list, 2 write nodes
-   avail lists: 1:15,2:32832,3:32311,4:138,5:648,6:53,7:6672,8:75,9:823,10:4,11:
+ 1528 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 240 attribute, 73 glue_spe
+c, 240 attribute_list, 2 write nodes
+   avail lists: 1:15,2:32790,3:32311,4:138,5:653,6:53,7:6672,8:75,9:823,10:4,11:
 320
- 58347 multiletter control sequences out of 65536+600000
+ 58348 multiletter control sequences out of 65536+600000
  101 fonts using 6155263 bytes
  103i,11n,101p,732b,2401s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/U
@@ -1380,9 +1380,9 @@ c/lm/lmr17.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 lm/lmri12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/symbols/msam10.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Topics in MP.pdf (28 pages, 438950 bytes).
+Output written on Topics in MP.pdf (30 pages, 459095 bytes).
 
-PDF statistics: 384 PDF objects out of 1000 (max. 8388607)
- 157 named destinations out of 1000 (max. 131072)
- 120 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 406 PDF objects out of 1000 (max. 8388607)
+ 169 named destinations out of 1000 (max. 131072)
+ 128 words of extra memory for PDF output out of 10000 (max. 100000000)
 
