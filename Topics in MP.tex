@@ -1271,4 +1271,754 @@
 		\item The above lemma shows that $ad_{*}$ is a Lie algebra homomorphism on $V=\mathfrak{g}$ - a representation of $\mathfrak{g}$ on itself
 		\item This defines the \textit{adjoint representation of a Lie algebra} $\mathfrak{g}$ on itself, given by $ad_{*}\,:\,\mathfrak{g}\to End(\mathfrak{g})$
 	\end{itemize}
+	\subsection{Group Actions on Manifolds}
+	\begin{itemize}
+		\item For this section, $G$ denotes a Lie group and $M$ a smooth manifold
+		\item We define a \textit{left action} of $G$ on $M$ as a smooth map
+		\begin{equation}
+			\phi\,:\,G\times M\to M,\quad (g,p)\mapsto g\cdot p
+		\end{equation}
+		obeying the properties that:
+		\begin{enumerate}
+			\item $g_{1}\cdot(g_{2}\cdot p)=(g_{1}g_{2})\cdot p$ for all $g_{1},g_{2}\in G$ and $p\in M$
+			\item $e\cdot p=p$ for all $p\in M$
+		\end{enumerate}
+		\item We can similarly define a right action if we like
+		\item Inspired by this, given a left action and $g\in G$ we can define an associated diffeomorphism $\phi_{g}\,:\,M\to M$ by $\phi_{g}(p)=g\cdot p$
+		\item In this notation, property (1) becomes $\phi_{g_{1}}\circ \phi_{g_{2}}=\phi_{g_{1}g_{2}}$, so the map $g\mapsto \phi_{g}$ is a group homomorphism from $G$ to the group of diffeomorphisms of $G$
+		\item Simple examples of left actions of groups would be $GL(n,\mathbb{R})$ acting on $\mathbb{R}^{n}$ by matrix multiplication (i.e. $\phi(M,x)=Mx$ for $M\in GL(n,\mathbb{R})$ and $x\in\mathbb{R}^{n}$) or $O(n)$ acting on the unit $n$-sphere $S^{n-1}=\{x\in\mathbb{R}^{n}\,|\,\lvert x\rvert=1\}$ similarly
+		\item We can define three important properties of left actions; we say a left action $\phi$ of $G$ on $M$ is:
+		\begin{itemize}
+			\item \textit{Effective} if $\phi_{g}(p)=p$ for all $p\in M$ implies $g=e$. Essentially, the only element of $G$ which acts trivially on $M$ is the identity
+			\item \textit{Transitive} if for all $p,q\in M$, there exists $g\in G$ such that $g\cdot p=q$. This says that any two points in $M$ are related by the action of an element of $G$, and if this holds, we say $M$ is a \textit{homogenous space}
+			\item \textit{Free} if every $g\neq e$ has no fixed points; that is, if $g\cdot p=p$ implies $g=e$
+		\end{itemize}
+		\item There's a theorem (not proved) which says that given a non-effective group action, we can always define an effective one
+		\item As some examples, the action of $GL(n,\mathbb{R})$ on $\mathbb{R}^{n}$ and of $O(n)$ on $S^{n-1}$ are effective and transitive, but not free
+		\item An example of an effective, transitive, and free action would be a Lie group $G$ acting on itself by left-multiplication
+		\item We now define the \textit{orbit} of $p\in M$ under $G$ as
+		\begin{equation}
+			G\cdot p=\{g\cdot p\in M\,|\,g\in G\}
+		\end{equation}
+		\item We think of this as the set of points in $M$ related to $p$ by an element of $G$
+		\item Note that $\phi$ is transitive iff $M=G\cdot p$ for all $p\in M$
+		\item The \textit{stabiliser/isotropy subgroup} of $p\in M$ is defined as
+		\begin{equation}
+			G_{p}=\{g\in G\,|\,g\cdot p = p\}
+		\end{equation}
+		\item So $\phi$ is free iff $G_{p}=\{e\}$ for all $p\in M$
+		\item \textbf{Theorem:} $G_{p}$ is a Lie subgroup of $G$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Let $p\in M$, and define a smooth map by $\alpha_{p}\,:\,G\to M$ by $\alpha_{p}(g)=g\cdot p$
+			\item Then, $G_{p}=\{g\in G\,|\,\alpha_{p}(g)=p\}$, which says that $G_{p}$ is the inverse image $\alpha^{-1}_{p}(p)$ of the point $p$
+			\item Therefore, $G_{p}$ is a closed subgroup of $G$ and hence a Lie group $\blacksquare$
+		\end{itemize}
+		\item Now, consider a closed subgroup $H$ of $G$; $H$ acts on $G$ by right-multiplication $R_{h}g=gh$
+		\item The orbits of $g$ under $H$ are called the \textit{left-cosets}, denoted $gH$
+		\item The set of left-cosets $G/H$ is in fact a smooth manifold (not proved), and $G$ acts on $G/H$ by a left action given by $g_{1}(g_{2}H)=(g_{1}g_{2})H$
+		\item In this language, we can reformulate the \textit{orbit-stabiliser theorem}
+		\item \textbf{Theorem:} given a left action of $G$ on $M$, there is a diffeomorphism for each $p\in M$ given by
+		\begin{equation}
+			\psi\,:\,G\cdot p\to G/G_{p},\quad \psi(g\cdot p)=gG_{p}
+		\end{equation}
+		\item Note that $\psi(g\cdot p)=g\psi(p)$
+	\end{itemize}
+	\newpage
+	\section{Gauge Theory}
+	\subsection{Integration on Manifolds}
+	\begin{itemize}
+		\item For this section, $M$ is an $n$-dimensional manifold
+		\item Recall that $M$ is \textit{orientable} if there exists a nowhere vanishing, top-ranked form $\mu\in \Omega^{n}(M)$, called a \textit{volume form/orientation}
+		\item Note that since $\dim(\Omega^{n}(M))=1$, if we have two orientations $\mu$ and $\mu'$, we must have $\mu'=f\mu$ for $f\in C^{\infty}(M)$ and $f\neq 0$ on $M$
+		\item This means we can classify orientations: $f>0$ gives equivalent orientations, whereas $f<0$ gives inequivalent ones
+		\item So orientable $M$ admits two inequivalent orientation classes
+		\item Orientability is equivalent to existence of an \textit{oriented atlas}; that is, an atlas where the Jacobian of all transition functions has positive determinant
+		\item To see this equivalence, choose an \textit{oriented chart} $(U,\phi)$, $\phi=(x^{i})$ and take $\mu\in \Omega^{n}(U)$, so we can write
+		\begin{equation}
+			\mu=g\,dx^{1}\wedge\ldots\wedge dx^{n}
+		\end{equation}
+		with $g>0$ on $U$ (always possible due to continuity)
+		\item Now, suppose we have an overlapping chart $(V,\psi)$, $\psi=(y^{i})$; the transition functions are $y(p)=\psi\circ\phi^{-1}(x(p))$ for all $p\in U\cap V$
+		\item Therefore on this overlap, we have:
+		\begin{equation}
+			\mu=g'\,dy^{1}\wedge\ldots\wedge dy^{n}=g'\det\left(\frac{\partial y}{\partial x}\right)\,dx^{1}\wedge\ldots\wedge dx^{n}
+		\end{equation}
+		since $dy^{i}=\frac{\partial y^{i}}{\partial x^{j}}dx^{j}$
+		\item In particular, we can choose $\det(\partial y/\partial x)>0$ so $g>0$ implies $g'>0$ on $U\cap V$, and so we can extend $\mu$ to all $V$ such that the component $g'>0$
+		\item We can repeat this argument until we cover $M$ with $\mu$, and so we get a nowhere vanishing $n$-form on $M$
+		\item Conversely, if $\mu\in\Omega^{n}(M)$ is nowhere vanishing, then we can always arrange the components of $\mu$ to be positive on overlapping charts, and since $g=\det(\partial y/\partial x)g'$, we can construct an oriented atlas
+		\item We can now define the \textit{integral} of $\alpha\in\Omega^{n}(U)$ on an oriented chart $(U,\phi)$; we can write $\alpha=a\,dx^{1}\wedge\ldots\wedge dx^{n}$ for $a\in C^{\infty}(U)$, and then the integral is
+		\begin{equation}
+			\int_{U}\alpha=\int_{\phi(U)}(a\circ\phi^{-1})(x)dx\ldots dx^{n}
+		\end{equation}
+		where the RHS is the usual integral on $\phi(u)\subset \mathbb{R}^{n}$ 
+		\item Importantly, this definition is chart-independent
+		\item If $(U,\psi)$ is a different oriented chart, then $\alpha =a'\,dy^{1}\wedge\ldots\wedge dy^{n}$, where $a=a'\det(\partial y/\partial x)$, and so:
+		\begin{equation}
+			\begin{aligned}
+				\int_{\psi(U)}(a'\circ\psi^{-1})(y)dy^{1}\ldots dy^{n}&=\int_{\phi(U)}(a'\circ\phi^{-1})(x)\det\left(\frac{\partial y}{\partial x}\right)\,dx^{1}\ldots dx^{n}\\&=\int_{\phi(U)}(a\circ \phi^{-1})(x)dx^{1}\ldots dx^{n}
+			\end{aligned}
+		\end{equation}
+		where the first line is just the usual change of variables formula
+		\item We also generalise this definition to define integration of an $n$-form over all of $M$
+		\item To do this, we take an open cover $\{U_{\alpha}\}$ of $M$ and define a \textit{partition of unity} of $M$: a set of functions $\rho_{\alpha}\in C^{\infty}(M)$ such that
+		\begin{enumerate}
+			\item $\rho_{\alpha}\rvert_{M/ U_{\alpha}}=0$
+			\item $\sum_{\alpha}\rho_{\alpha}=1$
+			\item $0\leq\rho_{\alpha}\leq 1$
+		\end{enumerate}
+		\item These always exist if $M$ is \textit{paracompact}, which we assume to be true in physics lol
+		\item Then, the integral of $\omega\in\Omega^{n}(M)$ is
+		\begin{equation}
+			\int_{M}\alpha=\sum_{\alpha}\int_{U_{\alpha}}\rho_{\alpha}\omega
+		\end{equation}
+		\item It can be shown that this definition is independent of the partition of unity, and of the atlas
+		\item \textbf{Theorem:} (Stokes) Let $M$ be an $n$-dimensional oriented manifold, and $\omega\in\Omega^{n-1}(M)$ has compact support. Then:
+		\begin{equation}
+			\int_{M}d\omega=0
+		\end{equation}
+		\item Note that if $M$ is compact and oriented, then $\int_{M}d\omega=0$ for any $\omega\in\Omega^{n-1}(M)$
+		\item Heuristically, this means that any volume form $\mu$ on $M$ is not exact: if $\mu=d\omega$, then $\int_{M}\mu=0$, but $\int_{M}\mu=\sum_{\alpha}\int_{U_{\alpha}}\rho_{\alpha}\mu>0$ since $\rho_{\alpha}\geq 0$ and $g_{\alpha}>0$
+		\item Given a volume form $\mu$, we can also define integration of functions $f\in C^{\infty}(M)$ by
+		\begin{equation}
+			\int_{M}f=\int_{M}f\mu
+		\end{equation}
+		\item But note: on an arbitrary oriented manifold, there is no canonical choice of a volume form
+		\item We have seen so far that a $2n$-dimensional symplectic manifold $(M,\omega)$ admits a natural volume form $\omega^{n}$, but another important class of manifolds admitting orientations are the \textit{pseudo-Riemannian manifolds}
+		\item These are $n$-dimensional manifold $M$ equipped with a smooth family of non-degenerate symmetric bilinear forms $g_{p}\,:\,T_{p}M\times T_{p}M\to \mathbb{R}$ for all $p\in M$; this defines a $(0,2)$ non-degenerate symmetric tensor field $g$ on $M$ called the \textit{metric tensor}, and we write $(M,g)$
+		\item The metric has a \textit{signature} $s$, given by the number of negative eigenvalues
+		\item In a coordinate basis, we write $g=g_{ij}dx^{i}dx^{j}$, where formally $dx^{i}dx^{j}=\frac{1}{2}(dx^{i}\otimes dx^{j}+dx^{j}\otimes dx^{i})$
+		\item Simple examples would be the Euclidean metric $\delta=\delta_{ij}dx^{i}dx^{j}$ with $s=0$ on $\mathbb{R}^{n}$, or the Minkowski metric $\eta=\eta_{\mu\nu}dx^{\mu}dx^{\nu}$ where $\eta_{\mu\nu}=\text{diag}(-1,1,\ldots,1)$ on $\mathbb{R}^{n}$
+		\item Non-degeneracy guarantees the existence of a $(2,0)$ tensor field called the \textit{inverse metric}, which we denote $g^{ab}$, so $g^{ab}g_{bc}=\delta^{a}_{c}$
+		\item Formally, this defines a musical isomorphism $T_{p}M\simeq T_{p}^{*}M$ just as for symplectic spaces
+		\item The inverse metric also defines an \textit{inner product of} $k$\textit{-forms}: given $\alpha,\beta\in\Omega^{k}(M)$, the inner product is
+		\begin{equation}
+			\braket{\alpha,\beta}=\frac{1}{k!}\alpha_{a_{1}\ldots a_{k}}\beta_{b_{1}\ldots b_{k}}g^{a_{1}b_{1}}\ldots g^{a_{k}b_{k}}
+		\end{equation}
+		\item Now, if $M$ is orientable (which we assume), there is a natural nowhere vanishing $n$-form which we denote $\text{dvol}\in\Omega^{n}(M)$, which is defined by the metric
+		\item In a chart, this is explicitly:
+		\begin{equation}
+			\text{dvol}=\sqrt{\left\lvert\det{g_{ij}}\right\rvert}\,dx^{1}\wedge\ldots \wedge dx^{n}
+		\end{equation}
+		\item This is easily verified to be chart-independent, and can be extended to a volume form on $M$
+	\end{itemize}
+	\subsection{Hodge Star Operator and Maxwell's Equations}
+	\begin{itemize}
+		\item Maxwell's equations are most neatly expressed in terms of differential forms; this has the advantage that they can be formulated on any pseudo-Riemannian manifold
+		\item We now define the \textit{Hodge star operator}; let $(M,g)$ be a pseudo-Riemannian manifold of dimension $n$, then $\star\,:\,\Omega^{k}(M)\to\Omega^{n-k}(M)$ defined by
+		\begin{equation}
+			\alpha\wedge\star\beta=\braket{\alpha,\beta}\text{dvol}
+		\end{equation}
+		for all $\alpha,\beta\in\Omega^{k}(M)$ is the Hodge star
+		\item While this is elegant, it is not immediately useful
+		\item Let $e_{i},\,i=1,\ldots,n$ be a local orthonormal frame on $(M,g)$, so $g_{ij}=g(e_{i},e_{j})=\eta_{ij}$ where $\eta_{ij}=\eta_{i}\delta_{ij}$ (no sum) and $\eta_{1}=\ldots=\eta_{s}=-1$ and $\eta_{s+1}=\ldots=\eta_{n}=1$; the dual vectors $\theta^{i}$ are also orthonormal $\braket{\theta^{i},\theta^{j}}=\eta^{ij}$ where $\eta^{ij}=\eta_{i}\delta^{ij}$ (no sum)
+		\item The volume form in an orthonormal frame is
+		\begin{equation}
+			\text{dvol}=\theta^{1}\wedge\ldots\wedge\theta^{n}
+		\end{equation}
+		since $\det{g_{ij}}=\pm1$ in such a basis
+		\item A basis of differential $k$-forms is given by
+		\begin{equation}
+			\theta^{I}=\theta^{i_{1}}\wedge\ldots\wedge\theta^{i_{k}}
+		\end{equation}
+		where $I=(i_{1},\ldots,i_{k})$ is a multi-index defined by $i_{1}<\ldots<i_{k}$
+		\item It can be checked that these are orthonormal with respect to the inner product on $k$-forms $\braket{\theta^{I},\theta^{J}}=\eta^{IJ}$ where $\eta^{IJ}=\eta^{i_{1}j_{1}}\ldots\eta^{i_{k}j_{k}}$
+		\item Therefore, $\theta^{I}\wedge\star\theta^{J}=\eta^{IJ}\text{dvol}$, and so
+		\begin{equation}
+			\star\theta^{I}=\eta_{I}\sigma_{I}\theta^{\bar{I}}
+		\end{equation}
+		where $\eta_{I}=\eta_{i_{1}}\ldots\eta_{i_{k}},\,\bar{I}=(\bar{i}_{1},\ldots,\bar{i}_{n-k})$ is the unique complementary multi-index to $I$ and $\sigma_{I}$ is the sign of the permutation $(I,\bar{I})$
+		\item This gives us the action of $\star$ on an orthonormal basis of $k$-forms, and so we can compute its action on any $k$-form
+		\item Note that $\star^{2}\,:\,\Omega^{k}(M)\to\Omega^{k}(M)$
+		\item \textbf{Lemma:} Let $(M,g)$ be an $n$-dimensional pseudo-Riemannian manifold; on $\Omega^{k}(M)$, the operator $\star^{2}=(-1)^{s+k(n-k)}$ where $s$ is the signature of $g$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Working in an orthonormal basis as above:
+			\begin{equation}
+				\star^{2}\theta^{\bar{I}}=\eta_{I}\sigma_{I}\star\theta^{\bar{I}}=\eta_{I}\eta_{\bar{I}}\sigma_{I}\sigma_{\bar{I}}\theta^{I}
+			\end{equation}
+			\item But, $\eta_{I}\eta_{\bar{I}}=(-1)^{s}$ is the product of diagonal elements of $\eta_{ij}$, and $\sigma_{I}\sigma_{\bar{I}}=(-1)^{k(n-k)}$ is the sign of the permutation taking $(I,\bar{I})\to(\bar{I},I)$, and we are done $\blacksquare$
+		\end{itemize}
+		\item The \textit{adjoint} of exterior derivative $d$ is the operator $d^{\dagger}\,:\,\Omega^{k}(M)\to\Omega^{k-1}(M)$ defined by
+		\begin{equation}
+			\int_{M}\braket{\alpha,d\beta}\text{dvol}=\int_{M}\braket{d^{\dagger}\alpha,\beta}\text{dvol}
+		\end{equation}
+		for all compactly supported $\alpha\in\Omega^{k}(M)$ and $\beta\in\Omega^{k-1}(M)$
+		\item \textbf{Lemma:} The adjoint of $d$ is explicitly $d^{\dagger}=(-1)^{s+1+nk+n}\star d\star$ on $\Omega^{k}(M)$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item For any $\alpha\in\Omega^{k}(M)$ and $\beta\in\Omega^{k-1}(M)$ compactly supported, we have:
+			\begin{equation}
+				\begin{aligned}
+					\int_{M}\braket{\alpha,d\beta}\text{dvol}&=\int_{M}\braket{d\beta,\alpha}\text{dvol}=\int_{M}d\beta\wedge\star\alpha\\&=\int_{M}d(\beta\wedge\star\alpha)-(-1)^{k-1}\beta\wedge d\star\alpha\\&=(-1)^{k}\int_{M}\beta\wedge d\star\alpha\\&=(-1)^{k}(-1)^{s+(n-k+1)(k-1)}\int_{M}\beta\wedge\star(\star d\star \alpha)\\&=(-1)^{s+1+nk+n}\int_{M}\braket{\beta,\star d\star\alpha}\text{dvol}
+				\end{aligned}
+			\end{equation}
+			where we used Stokes', inserted $\star^{2}=(-1)^{s+k'(n-k')}$ acting on the $k'=n-k+1$ form $d\star\alpha$ and we are done $\blacksquare$
+		\end{itemize}
+		\item In Euclidean space, the standard operations from vector calc. are $\nabla\cdot \mathbf{X}=\star d\star X$ and $\nabla \times \mathbf{X}=\star dX$, where the components of $\mathbf{X}\in\mathcal{X}(\mathbb{R}^{3})$ are identified with those of one-form $X\in\Omega^{1}(\mathbb{R}^{3})$ since $X_{i}=\delta_{ij}X^{j}$
+		\item We can now write down Maxwell's equations on any pseudo-Riemannian manifold $(M,g)$
+		\item The electric and magnetic fields can be packaged into the Maxwell field strength tensor $F\in\Omega^{2}(M)$, and the Maxwell equations in vacuum are then just
+		\begin{equation}
+			d\star F=0\quad\text{and}\quad dF=0
+		\end{equation}
+		\item Note the first is equivalent to $d^{\dagger}F=0$, and the latter is the Bianchi identity
+		\item Now consider the Maxwell equations on Minkowski spacetime $(\mathbb{R}^{4},\eta)$, where in Cartesians $(t,x^{1},x^{2},x^{3})$, the metric is $\eta=-dt^{2}+dx^{i}dx^{i}$
+		\item In general, we can decompose any $F\in\Omega^{2}(\mathbb{R}^{4})$ as
+		\begin{equation}
+			F=-E_{j}dt\wedge dx^{j}+\frac{1}{2}B_{i}\epsilon_{ijk}dx^{j}\wedge dx^{k}
+		\end{equation}
+		\item After some calculation, we find that the first of (5.17) is equivalent to 
+		\begin{equation}
+			\partial_{i}E_{i}=0,\quad\epsilon_{ijk}\partial_{j}B_{k}-\partial_{t}E_{i}=0
+		\end{equation}
+		and the second to
+		\begin{equation}
+			\partial_{i}B_{i}=0,\quad\epsilon_{ijk}\partial_{j}E_{k}+\partial_{t}B_{i}=0
+		\end{equation}
+		which is just Maxwell's equations as usual
+		\item Returning back to $(M,g)$, note that $F$ is a closed 2-form since $dF=0$, so by the Poincare lemma we can always write it locally as $F=dA$ for some 1-form $A$, called a \textit{gauge potential}
+		\item Precisely, let $\{U_{\alpha}\}$ be an open cover of $M$, so we can write $F=dA_{\alpha}$ on each $U_{\alpha}$ for some $A_{\alpha}\in\Omega^{1}(U_{\alpha})$
+		\item A local gauge potential is only uniquely defined up to a local \textit{gauge transformation}:
+		\begin{equation}
+			A'_{\alpha}=A_{\alpha}+d\lambda_{\alpha}
+		\end{equation}
+		for $\lambda_{\alpha}\in C^{\infty}(U_{\alpha})$
+		\item On a non-trivial overlap $U_{\alpha\beta}=U_{\alpha}\cap U_{\beta}$, we have $dA_{\alpha}=dA_{\beta}$, and so
+		\begin{equation}
+			A_{\alpha}=A_{\beta}+d\lambda_{\alpha\beta}
+		\end{equation}
+		where $\lambda_{\alpha\beta}\in C^{\infty}(U_{\alpha\beta})$
+		\item This means that local gauge fields on overlapping charts are related by gauge transformations, which persists in more general gauge theories
+	\end{itemize}
+	\subsection{Principal Bundles}
+	\begin{itemize}
+		\item \textit{Fibre bundles} are manifolds which locally look like a product space of a base manifold $M$ and a fibre manifold $F$
+		\item \textit{Vector bundles} are fibre bundles where the fibre manifold $F$ is a vector space
+		\item \textit{Principal bundles} are fibre bundles where $F$ is a Lie group - these are the central object of gauge theory, so we study them in detail
+		\item Formally, a principal (fibre) bundle is the following collection of data:
+		\begin{itemize}
+			\item A (smooth) manifold $P$ called the \textit{total space}
+			\item A Lie group $G$ and a free right action on $P$:
+			\begin{equation}
+				P\times G\to P,\quad (p,g)\mapsto pg
+			\end{equation}
+			\item The orbit space $M=P/G$ is a manifold called the \textit{base space}; there is a projection map
+			\begin{equation}
+				\pi\,:\,P\to M,\quad p\mapsto p\cdot G
+			\end{equation}
+			for all $p\in P$, so $\pi(p)=\pi(pg)$ for all $p\in P,\,g\in G$
+			\item The \textit{fibre} over $m\in M$ is $\pi^{-1}(m)=\{pg\,|\,g\in G,\,\pi(p)=m\}$. Note this means that $\pi^{-1}(m)$ is diffeomorphic to $G$ for every $m\in M$, and the right action of $G$ on $\pi^{-1}(m)$ is free and transitive
+			\item A \textit{local trivilisation} is an open cover $\{U_{\alpha}\}$ of $M$ equipped with diffeomorphisms
+			\begin{equation}
+				\Psi_{\alpha}\,:\,\pi^{-1}(U_{\alpha})\to U_{\alpha}\times G,\quad \Psi_{\alpha}(p)=(\pi(p),g_{\alpha}(p))
+			\end{equation}
+			where $p\in P$, the smooth maps $g_{\alpha}\,:\,\pi^{-1}(U_{\alpha})\to G$ satisfy $g_{\alpha}(pg)=g_{\alpha}(p)g$, and $g_{\alpha}\,:\,\pi^{-1}(m)\to G$ are diffeomorphisms for all $m\in U_{\alpha}$
+		\end{itemize}
+		\item Typical notations for a principal bundle are $P\xrightarrow{\pi}M$, $\pi\,:\,P\to M$, or $G\to P\xrightarrow{\pi}M$ etc.
+		\item Consider the nonempty overlaps $U_{\alpha\beta}=U_{\alpha}\cap U_{\beta}$ of $M$; for $p\in\pi^{-1}(m)$ with $m\in U_{\alpha\beta}$, we have two different trivilisations:
+		\begin{equation}
+			\Psi_{\alpha}(p)=(m,g_{\alpha}(p))\quad\text{and}\quad \Psi_{\beta}(p)=(m,g_{\beta}(p))
+		\end{equation} 
+		\item Therefore, $g_{\alpha}(p)=\tilde{g}_{\alpha\beta}(p)g_{\beta}(p)$ for some $\tilde{g}_{\alpha\beta}(p)\in G$, and so
+		\begin{equation}
+			\tilde{g}_{\alpha\beta}(p)=g_{\alpha}(p)g_{\beta}(p)^{-1}
+		\end{equation}
+		is a constant on each orbit: $\tilde{g}_{\alpha\beta}(pg)=\tilde{g}_{\alpha\beta}(p)$ for all $g\in G$
+		\item This defines the \textit{transition functions} of a principal $G$-bundle, which are the maps
+		\begin{equation}
+			g_{\alpha\beta}\,:\,U_{\alpha\beta}\to G,\quad g_{\alpha\beta}(m)=\tilde{g}_{\alpha\beta}(p)
+		\end{equation}
+		for any $m\in U_{\alpha\beta}$ and $p\in \pi^{-1}(m)$
+		\item \textbf{Lemma:} The transition functions satisfy the \textit{cocycle conditions}:
+		\begin{enumerate}
+			\item $g_{\alpha\beta}(m)g_{\beta\alpha}(m)=e$ for all $m\in U_{\alpha\beta}$
+			\item $g_{\alpha\gamma}(m)g_{\gamma\beta}(m)g_{\beta\alpha}(m)=e$ for all $m\in U_{\alpha\beta\gamma}$
+		\end{enumerate}
+		where $U_{\alpha\beta\gamma}=U_{\alpha}\cap U_{\beta}\cap U_{\gamma}$ are nonempty
+		\item This follows immediately from the definitions
+		\item Note that given a manifold $M$ with open cover $\{U_{\alpha}\}$ and functions $\{g_{\alpha\beta}\,:\,U_{\alpha\beta}\to G\}$ satisfying the cocycle conditions, we can construct a principal bundle
+		\item Define the equivalence relation $(m,g)\sim(m,g_{\alpha\beta}(m)g)$ for all $m\in U_{\alpha\beta}$, $g\in G$; then $P=\bigcap_{\alpha}(U_{\alpha}\times G)/\sim$ is a principal bundle with projection $\pi$ onto the first factor, and right-action of $G$ on the second factor
+		\item We say a principal $G$-bundle is \textit{trivial} is there is a diffeomorphism
+		\begin{equation}
+			\Psi\,:\,P\to M\times G,\quad p\mapsto(\pi(p),\gamma(p))
+		\end{equation}
+		where $\gamma(pg)=\gamma(p)g$ (think of this as a global trivilisation)
+		\item For example, $P=M\times G$ is a trivial principal bundle with $\pi$ projecting onto the first factor and right action given by $G$ on the second factor
+		\item A \textit{section} of $P$ is a smooth map $s\,:\,M\to P$ with $\pi\circ s=id$; a smooth assignment to every $m\in M$ of a $p\in\pi^{-1}(m)$
+		\item \textbf{Theorem:} A principal bundle is trivial if and only if it admits a section
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item First, suppose we have a section $s\,:\,M\to P$
+			\item Define the map $\Psi(p)=(\pi(p),\gamma(p))$ where $\gamma(p)\in G$ is uniquely defined by $p=s(\pi(p))\gamma(p)$
+			\item Note that:
+			\begin{equation}
+				s(\pi(p))\gamma(p)g=pg=s(\pi(pg))\gamma(pg)=s(\pi(p))\gamma(pg)
+			\end{equation}
+			and so $\gamma(pg)=\gamma(p)g$
+			\item Therefore, $\Psi$ is a global trivilisation
+			\item Conversely, suppose $\Psi\,:\,P\to M\times G$ is a global trivilisation, and define $s(m)=\Psi^{-1}(m,e)\in P$ for any $m\in M$
+			\item Then:
+			\begin{equation}
+				\Psi(s(m))=(\pi(s(m)),\gamma(s(m)))=(m,e)
+			\end{equation}
+			which implies that $\pi\circ s=id$ and $(\gamma\circ s)(m)=e$; the first of these means $s$ is a section $\blacksquare$
+		\end{itemize}
+		\item Note that this is specific to principal bundles: other fibre bundles can admit sections without being trivial
+		\item By definition, $P$ is locally trivial so local sections always exist
+		\item That is, given a local trivilisation we can define smooth maps $s_{\alpha}\,:\,U_{\alpha}\to \pi^{-1}(U_{\alpha})$ where $s_{\alpha}(m)=\Psi_{\alpha}^{-1}(m,e)$, and then the same calculation as in the proof shows that $\pi\circ s_{\alpha}=id$ and $(g_{\alpha}\circ s_{\alpha})(m)=e$
+		\item These are called the \textit{canonical local sections}
+		\item The converse also holds: given local sections $s_{\alpha}\,:\,U_{\alpha}\to \pi^{-1}(U_{\alpha})$ with $\pi\circ s_{\alpha}=id$, we can define a local trivilisation
+		\item For every $m\in U_{\alpha}$ and $p\in \pi^{-1}(m)$, there is a unique $g_{\alpha}(p)\in G$ such that $p=s_{\alpha}(m)g_{\alpha}(p)$ and $\Psi_{\alpha}(p)=(\pi(p),g_{\alpha}(p))$ is a local trivilisation
+		\item So local trivilisations are equivalent to local sections
+		\item \textbf{Lemma:} On any non-trivial overlap $U_{\alpha\beta}$, the canonical local sections are related by $s_{\beta}(m)=s_{\alpha}(m)g_{\alpha\beta}(m)$ for all $m\in U_{\alpha\beta}$
+	\end{itemize}
+	\subsection{Connections on Principal Bundles}
+	\begin{itemize}
+		\item For this section, we refer to principal bundle $P\xrightarrow{\pi}M$ with Lie group $G$, and $m\in M$ is a point on the base, and $p\in \pi^{-1}(m)$ is in the fibre over $m$
+		\item The push-forward is (as usual) $\pi_{*}\,:\,T_{p}P\to T_{m}M$, given by $(\pi_{*}v_{p})(f)=v_{p}(f\circ\pi)$ for $f\in C^{\infty}(M)$ and $v_{p}\in T_{p}P$
+		\item We define the \textit{vertical subspace} $V_{p}\subset T_{p}P$, given by $V_{p}=\ker{\pi_{*}}$
+		\item We say a vector field $v\in\mathcal{X}(P)$ is \textit{vertical} if $v_{p}\in V_{p}$ for all $p\in P$
+		\item Note that if $\dot{\gamma}\in V_{\gamma(t)}$, then $0=\pi_{*}\dot{\gamma}=\frac{d}{dt}\pi(\gamma(t))$, and so $\pi(\gamma(t))$ is constant: $\gamma(t)$ lies in a fixed fibre
+		\item \textbf{Lemma:} If $v_{1},v_{2}$ are vertical vector fields, then the Lie bracket $[v_{1},v_{2}]$ is also a vertical vector field on $P$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item By the standard property of the push-forward:
+			$$
+			\pi_{*}[v_{1},v_{2}]=[\pi_{*}v_{1},\pi_{*}v_{2}]=0
+			$$
+			and we are done $\blacksquare$
+		\end{itemize}
+		\item This motivates the definition of the \textit{vertical distribution} $V=\cup_{p\in P}V_{p}\subset TP$, which is $G$-invariant as follows
+		\item Note that $\pi(R_{g}p)=\pi(pg)=\pi(p)$, and so $\pi\circ R_{g}=\pi$; thus let $v_{p}\in V_{p}$ and consider $R_{g*}v_{p}\in T_{pg}P$
+		\item We calculate $\pi_{*}(R_{g*}v_{p})=(\pi\circ R_{g})_{*}v_{p}=\pi_{*}v_{p}=0$, and so $R_{g*}v_{p}\in V_{pg}$
+		\item We write this $G$-invariance as $R_{g*}V_{p}=V_{pg}$
+		\item The vertical subspace is defined naturally by the bundle structure, but there is no canonical complement of $V_{p}$ in $T_{p}P$; a connection allows us to define such a complement
+		\item A \textit{connection} on $P$ is a smooth choice of \textit{horizontal subspace} $H_{p}\subset T_{p}P$ complementary to $V_{p}$; that is, $T_{p}P=H_{p}\oplus V_{p}$ such that $R_{g*}H_{p}=H_{pg}$ for all $p\in P$
+		\item The latter property here states that horizontal subspaces define a $G$-invariant distribution $H\subset TP$
+		\item Now, denote the Lie algebra of $G$ by $\mathfrak{g}=T_{e}G$ as usual
+		\item For any $X\in\mathfrak{g}$, we define the \textit{fundamental vector field}
+		\begin{equation}
+			\sigma_{p}(X)=\left.\frac{d}{dt}p\exp(tX)\right\rvert_{t=0}
+		\end{equation}
+		where $p\exp(tX)$ is a curve in $P$ through $p$ with tangent vector $\sigma_{p}(X)\in T_{p}P$ defined through the exponential map on $G$
+		\item \textbf{Reminder:} a curve $c\,:\,\mathbb{R}\to G$ on a Lie group $G$ is a one-parameter subgroup of $G$ if $c(t)c(s)=c(t+s)$, and there is a bijection between one parameter subgroups $c_{V}(t)$ with $c'(0)=V$ where $X_{V}\in L(G)$ is a left-invariant vector field
+		\item Then the exponential map $\exp\,:\,T_{e}G\to G$ is defined by $\exp(V)=c_{V}(1)$ where $c_{V}$ is the one-parameter group generated by $V\in T_{e}G$ as above; in particular, $c_{V}(t)=\exp(tV)$
+		\item In particular, $\exp(tX)$ is a curve in $G$ through $e$ with tangent $X\in T_{e}G$
+		\item So, we have:
+		\begin{equation}
+			\pi_{*}\sigma_{p}(X)=\left.\frac{d}{dt}\pi(p\exp(tX))\right\rvert_{t=0}=\left.\frac{d}{dt}\pi(p)\right\rvert_{t=0}=0
+		\end{equation}
+		where the second equality holds since $\exp(tX)\in G$ and so $p$ and $p\exp(tX)$ are on the same orbit
+		\item Therefore the fundamental vector field is always vertical: $\sigma_{p}(X)\in V_{p}$
+		\item \textbf{Lemma:} Fundamental vector fields satisfy $R_{g*}\sigma_{p}(X)=\sigma_{pg}(ad_{g^{-1}}X)$ for $g\in G$, $X\in\mathfrak{g}$, $p\in P$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Recall the adjoint maps: $Ad_{g}\,:\,G\to G$ is $Ad_{g}h=ghg^{-1}$ for all $h\in G$, and the derivative of this at the identity is $ad_{g}=(Ad_{g})_{*}\,:\,T_{e}G\to T_{e}G$
+			\item Therefore:
+			$$
+			\begin{aligned}
+				R_{g*}\sigma_{p}(X)&=\left.\frac{d}{dt}R_{g}(p\exp(tX))\right\rvert_{t=0}=\left.\frac{d}{dt}p\exp(tX)g\right\rvert_{t=0}\\
+				&=\left.\frac{d}{dt}pgg^{-1}\exp(tX)g\right\rvert_{t=0}=\left.\frac{d}{dt}\,Ad_{g^{-1}}\exp(tX)\right\rvert_{t=0}\\&=\left.\frac{d}{dt}pg\exp(t\,ad_{g^{-1}}X)\right\rvert_{t=0}=\sigma_{pg}(ad_{g^{-1}}X)
+			\end{aligned}
+			$$
+			where we use that $Ad_{g^{-1}}\exp(tX)=\exp(t\,ad_{g^{-1}}X)$ is the one-parameter subgroup generated by $ad_{g^{-1}}X$ and we are done $\blacksquare$
+		\end{itemize}
+		\item Note: $\sigma_{p}\,:\,\mathfrak{g}\to V_{p}$ for each $p\in P$ defines an isomorphism (not proved)
+		\item Thus $\dim{V_{p}}=\dim{G}$, and $\dim{H_{p}}=\dim{P}-\dim{G}$; $H_{p}$ can be defined by $\dim{G}$ linear equations in $T_{p}P$ (i.e. by $\dim{G}$ one-forms)
+		\item This motivates the definition of the \textit{connection 1-form} of a horizontal distribution $H\subset TP$: it is a $\mathfrak{g}$-valued 1-form $\omega\in\Omega^{1}(P;\mathfrak{g})$ defined by
+		\begin{equation}
+			\omega(v)=\begin{cases}0\quad&\text{if }v\text{ is horizontal}\\X\quad&\text{if }v=\sigma(X)\end{cases}
+		\end{equation}
+		\item \textbf{Lemma:} The connection 1-form satisfies $R^{*}_{g}\omega=ad_{g^{-1}}\circ\omega$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item If $v$ is horizontal, then $\omega(v)=0$, so since $R_{g*}H_{p}=H_{pg}$ it follows that $R_{g*}v$ is also horizontal
+			\item So: $0=\omega(R_{g*}v)=(R^{*}_{g})(v)$ as required
+			\item If $v$ is vertical, then we can write $v=\sigma(X)$ for some $X\in\mathfrak{g}$ by the above isomorphism
+			\item Therefore:
+			$$
+			\begin{aligned}
+				(R^{*}_{g}\omega)(\sigma(X))&=\omega(R_{g*}\sigma(X))=\omega(\sigma(ad_{g^{-1}}X))\\&=ad_{g^{-1}}(X)=ad_{g^{-1}}\omega(\sigma(X))
+			\end{aligned}
+			$$
+			and we are done $\blacksquare$
+		\end{itemize}
+		\item Conversely, it can be shown that any $\omega\in\Omega^{1}(P;\mathfrak{g})$ such that $\omega(\sigma(X))=X$ and $R^{*}_{g}\omega=ad_{g^{-1}}\circ\omega$ defines a connection $H=\ker{\omega}\subset TP$
+		\item Given such a connection 1-form $\omega\in\Omega^{1}(P;\mathfrak{g})$ and a canonical local section $s_{\alpha}\,:\,U_{\alpha}\to\pi^{-1}(U_{\alpha})$, a \textit{local gauge field} is defined as
+		\begin{equation}
+			A_{\alpha}=s_{\alpha}^{*}\omega\in\Omega^{1}(U_{\alpha};\mathfrak{g})
+		\end{equation}
+		\item \textbf{Lemma:} The restriction $\omega\rvert_{\pi^{-1}(U_{\alpha})}$ of a connection 1-form $\omega$ defined by a canonical local section is equal to
+		\begin{equation}
+			\omega_{\alpha}=ad_{g_{\alpha}^{-1}}\circ\pi^{*}A_{\alpha}+g^{*}_{\alpha}\theta
+		\end{equation}
+		where $g_{\alpha}\,:\,\pi^{-1}(U_{\alpha})\to G$ is defined by the corresponding local trivilisation, and $\theta\in\Omega^{1}(G;\mathfrak{g})$ is the Maurer-Cartan form on $G$ (not proven)
+		\item \textbf{Theorem:} On non-empty overlaps $U_{\alpha\beta}$, local gauge fields are related by
+		\begin{equation}
+			A_{\alpha}=ad_{g_{\alpha\beta}}\circ A_{\beta}+g^{*}_{\beta\alpha}\theta
+		\end{equation}
+		where $g_{\alpha\beta}\,:\,U_{\alpha\beta}$ are the transition functions of $P$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item $\omega\in\Omega^{1}(P;\mathfrak{g})$ is globally defined on $P$, so $\omega_{\alpha}=\omega_{\beta}$ on $\pi^{-1}(U_{\alpha\beta})$
+			\item Equation (5.36) allows us to relate the local gauge fields $A_{\alpha}$ and $A_{\beta}$ on $U_{\alpha\beta}$ as
+			$$
+			\begin{aligned}
+				A_{\alpha}&=s_{\alpha}^{*}\omega_{\alpha} =s_{\alpha}^{*}\omega_{\beta}=s_{\alpha}^{*}(ad_{g_{\beta}^{-1}}\circ\pi^{*}A_{\beta}+g_{\beta}^{*}\theta)\\&=ad_{(g_{\beta}\circ s_{\alpha})^{-1}}\circ s_{\alpha}^{*}\pi^{*}A_{\beta}+s_{\alpha}^{*}g_{\beta}^{*}\theta\\&=ad_{(g_{\beta}\circ s_{\alpha})^{-1}}\circ A_{\beta}+(g_{\beta}\circ s_{\alpha})^{*}\theta
+			\end{aligned}
+			$$
+			since $s_{\alpha}^{*}\pi^{*}=(\pi\circ s_{\alpha})^{*}=id$
+			\item We therefore need to consider map $g_{\beta}\circ s_{\alpha}\,:\,U_{\alpha\beta}\to G$, which we can write as $g_{\beta}\circ s_{\alpha}=(g_{\beta}g_{\alpha}^{-1}g_{\alpha})\circ s_{\alpha}=(g_{\beta}g_{\alpha}^{-1})\circ e=g_{\beta\alpha}$
+			\item Then finally, $g_{\beta\alpha}^{-1}=g_{\alpha\beta}$, and we are done $\blacksquare$
+		\end{itemize}
+		\item \textbf{Corollary:} For a matrix group $G$:
+		\begin{equation}
+			A_{\alpha}=g_{\alpha\beta}A_{\beta}g_{\alpha\beta}^{-1}-dg_{\alpha\beta}\,g_{\alpha\beta}^{-1}
+		\end{equation}
+		\item \textbf{Proof:} 
+		\begin{itemize} 
+			\item For matrix groups, $ad_{g}X=gXg^{-1}$ and $g_{\alpha\beta}^{*}\theta=g^{-1}_{\alpha\beta}dg_{\alpha\beta}=-g_{\alpha\beta}dg_{\alpha\beta}^{-1}$ is the pull-back of the Maurer-Cartan form $\blacksquare$
+		\end{itemize}
+		\item So, given a collection of 1-forms $A_{\alpha}\in\Omega^{1}(U_{\alpha};\mathfrak{g})$ that satisfy (5.37) on overlaps, we can reverse all the above logiv to construct a connection 1-form $\omega\in\Omega^{1}(P;\mathfrak{g})$ by defining $\omega=\omega_{\alpha}$ on $\pi^{-1}(U_{\alpha})$ as in (5.36)
+		\item We therefore get that the following give three equivalent descriptions of a connection on a principal bundle $P$:
+		\begin{enumerate}
+			\item A horizontal distribution $H\subset TP$ that is $G$-invariant $R_{g*}H_{p}=H_{pg}$
+			\item A 1-form $\omega\in\Omega^{1}(P;\mathfrak{g})$ satisfying $\omega(\sigma(X))=X$, and $R_{g}^{*}\omega=ad_{g^{-1}}\circ \omega$
+			\item A collection of 1-forms $A_{\alpha}\in\Omega^{1}(U_{\alpha};\mathfrak{g})$ for an open cover $\{U_{\alpha}\}$ satisfying (5.36) on overlaps
+		\end{enumerate}
+	\end{itemize}
+	\subsection{Gauge Transformations}
+	\begin{itemize}
+		\item We define a \textit{gauge transformation} of a principal bundle $P$ as a diffeomorphism $\Phi\,:\,P\to P$ such that both $\pi\circ\Phi=\pi$ and $\Phi(pg)=\Phi(p)g$
+		\item The gauge transformations form a group under composition, denoted $\mathcal{G}$
+		\item Note that $\Phi$ maps fibres to themselves: if $m\in M$ and $p\in\pi^{-1}(m)$ lies in the fibre above $m$, then $\Phi(p)\in\pi^{-1}(m)$ and vice versa since $\pi(\Phi(p))=\pi(p)$
+		\item Suppose we have a local trivilisation $\Psi_{\alpha}\,:\,\pi^{-1}(U_{\alpha})\to U_{\alpha}\times G$ with $\Psi_{\alpha}(p)=(\pi(p),g_{\alpha}(p))$ with $g_{\alpha}(pg)=g_{\alpha}(p)g$; then
+		\begin{equation}
+			\Psi_{\alpha}(\Phi(p))=(\pi(\Phi(p)),g_{\alpha}(\Phi(p)))=(\pi(p),\bar{\Phi}_{\alpha}(p)g_{\alpha}(p))
+		\end{equation}
+		where we are implicit in defining $\bar{\Phi}_{\alpha}(pg)=g_{\alpha}(\Phi(p))g_{\alpha}(p)^{-1}$
+		\item The $\bar{\Phi}_{\alpha}$s are constant on fibres:
+		\begin{equation}
+			\bar{\Phi}_{\alpha}(pg)=g_{\alpha}(\Phi(pg))g_{\alpha}(pg)^{-1}=g_{\alpha}(\Phi(p)g)(g_{\alpha}(p)g)^{-1}=\bar{\Phi}_{\alpha}(p)
+		\end{equation}
+		and so they define a smooth map $\Phi_{\alpha}\,:\,U_{\alpha}\to G$ by $\Phi_{\alpha}(m)=\bar{\Phi}_{\alpha}(p)$ where $p\in\pi^{-1}(m)$
+		\item We call the $\Phi_{\alpha}$ \textit{local gauge transformations}
+		\item Now, consider non-empty overlaps $U_{\alpha\beta}$; let $m\in U_{\alpha\beta}$ and $p\in\pi^{-1}(U_{\alpha\beta})$, and we can then compute (tediously) that $\Phi_{\alpha}(m)=g_{\alpha\beta}(m)\Phi_{\beta}(m)g_{\alpha\beta}(m)^{-1}=Ad_{g_{\alpha\beta}(m)}\Phi_{\beta}(m)$
+		\item This means that local gauge transformations are related by conjugation under the transition functions
+		\item We also have the converse: given a set $\{\Phi_{\alpha}\,|\,U_{\alpha}\to G\}$ satisfying this transformation law, we can reconstruct a global gauge transformation $\Phi$ by reversing the above procedure
+		\item This is all a result of $\pi\circ\Phi=\pi$; we now consider the second property $\Phi(pg)=\Phi(p)g$
+		\item Write $pg=R_{g}p$, and this property then becomes $(\Phi\circ R_{g})(p)=(R_{g}\circ\Phi)(p)$
+		\item Taking a derivative, we therefore deduce $R_{g*}\Phi_{*}=\Phi_{*}R_{g*}$
+		\item Inspired by this, we define $H^{\Phi}=\Phi_{*}H$, where $H\subset TP$ is a connection; we calculate
+		\begin{equation}
+			R_{g*}H^{\Phi}_{\Phi(p)}=R_{g*}\Phi_{*}H_{p}=\Phi_{*}R_{g*}H_{p}=\Phi_{*}H_{pg}=H^{\Phi}_{\Phi(pg)}=H^{\Phi}_{\Phi(p)g}
+		\end{equation}
+		and so $H^{\Phi}$ is $G$-invariant
+		\item In fact, it turns out $H^{\Phi}$ is complementary to vertical subspaces $V$ and hence is a connection
+		\item \textbf{Lemma:} $\Phi_{*}\sigma(X)=\sigma(X)$ for any $X\in\mathfrak{g}$; that is, $\Phi_{*}V_{p}=V_{\Phi(p)}$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item We calculate:
+			$$
+			\Phi_{*}\sigma_{p}(X)=\left.\frac{d}{dt}\Phi(p\exp(tX))\right\rvert_{t=0}=\left.\frac{d}{dt}\Phi(p)\exp(tX)\right\rvert_{t=0}=\sigma_{\Phi(p)}(X)
+			$$
+			and we are done $\blacksquare$
+		\end{itemize}
+		\item This means $\Phi_{*}\,:\,T_{p}P\to T_{\Phi(p)}P$ is an isomorphism preserving vertical subspaces, so $H^{\Phi}$ is a horizontal distribution; combined with $G$-invariance, this establishes it is a connection
+		\item \textbf{Lemma:} Let $\omega$ be the connection 1-form of a connection $H\subset TP$. Then $\omega^{\Phi}=(\Phi^{*})^{-1}\omega$ is the connection 1-form for $H^{\Phi}$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item First, note that for all $X\in\mathfrak{g}$ we have
+			$$
+			\omega^{\Phi}(\sigma(X))=\omega(\Phi^{-1}_{*}\sigma(X))=\omega(\sigma(X))=X
+			$$
+			where the first equality is from the usual property of pull-backs/push-forwards, the second from the above lemma, and the third by definition of $\omega$
+			\item On the other hand: $\ker{\omega^{\Phi}}$ os given by vector fields $v\in\mathfrak{X}(P)$ satisfying $0=\omega^{\Phi}(v)=\omega(\Phi^{-1}_{*}v)$
+			\item This is equivalent to $(\Phi^{-1}_{*}v)_{p}\in H_{p}\implies v_{\Phi(p)}\in\Phi_{*}H_{p}=H^{\Phi}_{\Phi(p)}$
+			\item Thus $\ker{\omega^{\Phi}}$ is precisely the horizontal distribution $H^{\Phi}$ $\blacksquare$
+		\end{itemize}
+		\item \textbf{Theorem:} The local gauge field $A_{\alpha}^{\Phi}\in\Omega^{1}(U_{\alpha};\mathfrak{g})$ corresponding to connection 1-form $\omega^{\Phi}$ is related to that of $\omega$ by
+		\begin{equation}
+			A^{\Phi}_{\alpha}=ad_{\Phi_{\alpha}}\circ(A_{\alpha}-\Phi^{*}_{\alpha}\theta)
+		\end{equation}
+		or, for matrix groups
+		\begin{equation}
+			A^{\Phi}_{\alpha}=\Phi_{\alpha}A_{\alpha}\Phi^{-1}_{\alpha}-d\Phi_{\alpha}\Phi^{-1}_{\alpha}
+		\end{equation}
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Let $m\in U_{\alpha}$, $p\in\pi^{-1}(m)$, and $q=\Phi^{-1}(p)$ lie in the same fibre (since $\pi\circ\Phi^{-1}=\pi$)
+			\item Recall the lemma in the last section:
+			$$
+			\omega_{q}=ad_{g_{\alpha}(q)^{-1}}\circ\pi^{*}A_{\alpha}+g_{\alpha}^{*}\theta
+			$$
+			\item We can therefore compute, using the lemma above as well:
+			$$
+			\begin{aligned}
+				\omega^{\Phi}_{p}=(\Phi^{-1})^{*}\omega_{q}&=ad_{g_{\alpha}(q)^{-1}}\circ\underbrace{(\Phi^{-1})^{*}\pi^{*}}_{=(\pi\circ\Phi^{-1})^{*}=\pi^{*}}A_{\alpha}+(\Phi^{-1})^{*}g_{\alpha}^{*}\theta\\&=ad_{g_{\alpha}(q)^{-1}}\circ\pi^{*}A_{\alpha}+(g_{\alpha}\circ\Phi^{-1})^{*}\theta
+			\end{aligned}
+			$$
+			\item Consider the map $g_{\alpha}\circ \Phi^{-1}\,:\,\pi^{-1}(U_{\alpha})\to G$; we compute
+			$$
+			(g_{\alpha}\circ\Phi^{-1})(p)=g_{\alpha}(q)\quad\text{and}\quad\bar{\Phi}_{\alpha}(q)=g_{\alpha}(\Phi(q))g_{\alpha}(q)^{-1}
+			$$
+			and so
+			$$
+			g_{\alpha}(q)=\bar{\Phi}_{\alpha}(q)^{-1}g_{\alpha}(p)=\bar{\Phi}_{\alpha}(p)^{-1}g_{\alpha}(p)
+			$$
+			by constancy of $\bar{\Phi}$ on fibres
+			\item We can therefore write $g_{\alpha}\circ\Phi^{-1}=\bar{\Phi}_{\alpha}^{-1}g_{\alpha}$, and so
+			$$
+			(g_{\alpha}\circ\Phi^{-1})^{*}\theta=g_{\alpha}^{*}\theta-ad_{g_{\alpha}(p)^{-1}\bar{\Phi}_{\alpha}(p)}\circ\bar{\Phi}_{\alpha}^{*}\theta
+			$$
+			\item This is easily seen for matrix groups by using $g^{*}\theta=g^{-1}dg$ and the identity $dg^{-1}=-g^{-1}dgg^{-1}$:
+			$$
+			(g_{\alpha}\circ\Phi^{-1})^{*}\theta=(\bar{\Phi}_{\alpha}^{-1}g_{\alpha})^{-1}d(\bar{\Phi}_{\alpha}^{-1}g_{\alpha})=g_{\alpha}^{-1}dg_{\alpha}-g_{\alpha}^{-1}\bar{\Phi}_{\alpha}(\bar{\Phi}_{\alpha}^{-1}d\bar{\Phi}_{\alpha})(g^{-1}_{\alpha}\bar{\Phi}_{\alpha})^{-1}
+			$$
+			\item Putting all this together:
+			$$
+			\begin{aligned}
+				\omega_{p}^{\Phi}&=ad_{g_{\alpha}(p)^{-1}\bar{\Phi}_{\alpha}(p)}\circ(\pi^{*}A_{\alpha}-\bar{\Phi}_{\alpha}^{*}\theta)+g_{\alpha}^{*}\\&=ad_{g_{\alpha}(p)^{-1}}\circ\pi^{*}(ad_{\Phi_{\alpha}(m)}\circ A_{\alpha}-\Phi_{\alpha}^{*}\theta)+g_{\alpha}^{*}\theta
+			\end{aligned}
+			$$
+			where we use $\bar{\Phi}_{\alpha}(p)=\Phi_{\alpha}(\pi(p))=\Phi_{\alpha}(m)$, that $ad$ is a group homomorphism, and $\bar{\Phi}_{\alpha}^{*}=(\Phi_{\alpha}\circ\pi)^{*}=\pi^{*}\Phi_{\alpha}^{*}$
+			\item On the other hand, the lemma from the last section applied to $\omega^{\Phi}$ gives
+			$$
+			\omega_{p}^{\Phi}=ad_{g_{\alpha}(p)^{-1}}\circ\pi^{*}A_{\alpha}^{\Phi}+g_{\alpha}^{*}\theta
+			$$
+			so comparing the two gives the result
+			\item For matrix groups, we use $\Phi_{\alpha}^{*}\theta=\Phi_{\alpha}^{-1}d\Phi_{\alpha}$ and $ad_{g}X=gXg^{-1}$, and we are done $\blacksquare$
+		\end{itemize}
+		\item This theorem just states that local gauge fields transform under a gauge transformation
+	\end{itemize}
+	\subsection{Curvature}
+	\begin{itemize}
+		\item Given a connection $H\subset TP$ on principal $G$-bundle $P\xrightarrow{\pi}M$, we define the \textit{horizontal projection map} $h\,:\,TP\to TP$ so that for every $p\in P$, we have
+		\begin{equation}
+			h_{p}(v)=\begin{cases}v\quad&\text{if }v\in H_{p}\\0\quad&\text{if }v\in V_{p}\end{cases}
+		\end{equation}
+		\item We can extend this to be defined on forms: define $h^{*}_{p}\,:\,T_{p}^{*}P\to T_{p}^{*}P$ so for all $v\in T_{p}P$ and $\alpha\in T_{p}^{*}P$, we have
+		\begin{equation}
+			(h_{p}^{*}\alpha)(v)=\alpha(h_{p}(v))
+		\end{equation}
+		\item For $k$-forms, we have $(h^{*}\alpha)(v_{1},\ldots,v_{k})=\alpha(hv_{1},\ldots,hv_{k})$, and note that $h^{*}(\alpha\wedge\beta)=(h^{*}\alpha)\wedge(h^{*}\beta)$
+		\item The \textit{curvature} of a connection is then $\Omega=h^{*}d\omega\in\Omega^{2}(P;\mathfrak{g})$, where $\omega$ is the connection 1-form
+		\item Note the following for $u,v\in\mathfrak{X}(P)$:
+		\begin{equation}
+			\begin{aligned}
+				\Omega(u,v)=(h^{*}d\omega)(u,v)&=d\omega(hu,hv)\\&=(hu)(\omega(hv))-(hv)(\omega(hu))-\omega([hu,hv])\\&=-\omega([hu,hv])
+			\end{aligned}
+		\end{equation}
+		since $hu,hv$ are horizontal and so are in $\ker\omega$
+		\item This shows that $\Omega=0\iff [hu,hv]$ is horizontal for all $u,v\iff [u,v]$ is horizontal for all horizontal $u,v$
+		\item \textbf{Theorem:} The curvature satisfies the structure equation
+		\begin{equation}
+			\Omega=d\omega+\frac{1}{2}[\omega,\omega]
+		\end{equation}
+		where $[\cdot,\cdot]$ is both the Lie bracket on $\mathfrak{g}$ and the wedge product on $\Omega^{k}(P;\mathfrak{g})$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item First, note that for a basis $\{V_{i}\}$ of $\mathfrak{g}$, $\omega=\omega^{i}V_{i}$, and so
+			$$
+			\begin{aligned}
+			[\omega,\omega](u,v)&=[V_{i},V_{j}](\omega^{i}\wedge\omega^{j})(u,v)=[V_{i},V_{j}](\omega^{i}(u)\omega^{j}(v)-\omega^{i}(v)\omega^{j}(u))\\&=2[V_{i},V_{j}]\omega^{i}(u)\omega^{j}(v)=2[\omega(u),\omega(v)]
+			\end{aligned} 
+			$$
+			\item Therefore, the claim is equivalent to 
+			$$
+			\Omega(u,v)=d\omega(u,v)+[\omega(u),\omega(v)]
+			$$
+			\item We now have three cases to consider
+			\item Case 1: $u,v$ are both vertical, so $u=\sigma(X)$ and $v=\sigma(Y)$ for $X,Y\in\mathfrak{g}$
+			\item Then: $\Omega(u,v)=d\omega(hu,hv)=0$ since $hu=hv=0$
+			\item For the RHS, we have:
+			$$
+			\begin{aligned}
+				d\omega(u,v)&=u(\omega(\sigma(Y)))-v(\omega(\sigma(X)))-\omega([\sigma(X),\sigma(Y)])\\&=u(Y)-v(X)-\omega(\sigma([X,Y]))\\&=-[X,Y]\\&=-[\omega(\sigma(X)),\omega(\sigma(Y))]\\&=-[\omega(u),\omega(v)]
+			\end{aligned}
+			$$
+			where we use that $u(Y)=v(X)=0$ since $X,Y$ are constant Lie algebra-valued functions, and (not proven) $\sigma([X,Y])=[\sigma(X),\sigma(Y)]$
+			\item Case 2: $u,v$ are both horizontal, so $hu=u$ and $hv=v$
+			\item Then: $\Omega(u,v)=d\omega(hu,hv)=d\omega(u,v)$ and since $\omega(u)=\omega(v)=0$, it holds in this case
+			\item Case 3: WLOG say $u$ is horizontal and $v$ is vertical. so $hu=u$ and $v=\sigma(X)$
+			\item Then:
+			$$
+			\Omega(u,v)=d\omega(u,hv)=u(\omega(hv))-(hv)(\omega(u))-\omega([u,hv])=0
+			$$
+			since $\omega(u)=0$ and $hv=0$
+			\item For the RHS:
+			$$
+			\begin{aligned}
+				d\omega(u,v)&=u(\omega(v))-v(\omega(u))-\omega([u,v])\\&=u(X)-\omega([u,v])=-\omega([u,v])=0
+			\end{aligned}
+			$$
+			using that $[u,v]$ is horizontal (try and prove this yourself) $\blacksquare$
+		\end{itemize}
+		\item \textbf{Theorem:} The curvature satisfies the \textit{Bianchi identity}
+		\begin{equation}
+			h^{*}d\Omega=0
+		\end{equation}
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item From the structure equation, we have:
+			$$
+			h^{*}d\omega=h^{*}d(d\omega+\tfrac{1}{2}[\omega,\omega])=h^{*}[d\omega,\omega]=[h^{*}d\omega,h^{*}\omega]=0
+			$$
+			since $h^{*}\omega=0$ and $d[\omega,\omega]=2[d\omega,\omega]$ $\blacksquare$
+		\end{itemize}
+		\item We now define the \textit{local field strengths}
+		\begin{equation}
+			F_{\alpha}=s_{\alpha}\Omega\in\Omega^{2}(P;\mathfrak{g})
+		\end{equation}
+		where $s_{\alpha}\,:\,U_{\alpha}\to P$ are the canonical local sections
+		\item Applying the curvature structure equation, we find
+		\begin{equation}
+			\begin{aligned} 
+			F_{\alpha}=s^{*}_{\alpha}\Omega&=s^{*}_{\alpha}(d\omega+\tfrac{1}{2}[\omega,\omega])\\&=ds^{*}_{\alpha}\omega+\tfrac{1}{2}[s^{*}_{\alpha}\omega,s^{*}_{\alpha}\omega]\\&=dA_{\alpha}+\tfrac{1}{2}[A_{\alpha},A_{\alpha}]
+			\end{aligned}
+		\end{equation}
+		since pullbacks commute with exterior derivatives
+		\item \textbf{Theorem:} On nonempty overlaps $U_{\alpha\beta}$, we have
+		\begin{equation}
+			F_{\alpha}=ad_{g_{\alpha\beta}}\circ F_{\beta}
+		\end{equation}
+		or, for matrix groups
+		\begin{equation}
+			F_{\alpha}=g_{\alpha\beta}F_{\beta}g_{\alpha\beta}^{-1}
+		\end{equation}
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Recall that
+			$$
+			A_{\alpha}=ad_{g_{\alpha\beta}}\circ A_{\beta}+g_{\alpha\beta}^{*}\theta
+			$$
+			and plug this into the definition of local field strength
+			\item We also use the (not proved) identity
+			$$
+			d(ad_{g_{\alpha\beta}}\circ A_{\beta})=ad_{g_{\alpha\beta}}\circ dA_{\beta}-[g_{\beta\alpha}^{*}\theta,ad_{g_{\alpha\beta}}\circ A_{\beta}]
+			$$
+			which is easy to check for e.g. matrix groups
+			\item We find
+			$$
+			\begin{aligned}
+				F_{\alpha}&=ad_{g_{\alpha\beta}}\circ dA_{\beta}-[g_{\beta\alpha}^{*}\theta,ad_{g_{\alpha\beta}}\circ A_{\beta}]+d(g_{\beta\alpha}^{*}\theta)\\&\quad+\tfrac{1}{2}[ad_{g_{\alpha\beta}}\circ A_{\beta}+g_{\beta\alpha}^{*}\theta,ad_{g_{\alpha\beta}}\circ A_{\beta}+g_{\beta\alpha}^{*}\theta]\\&=ad_{g_{\alpha\beta}}\circ F_{\beta}+g_{\beta\alpha}^{*}(d\theta+\tfrac{1}{2}[\theta,\theta])\\&=ad_{g_{\alpha\beta}}\circ F_{\beta}
+			\end{aligned}
+			$$
+			since $[ad_{g}X,ad_{g}Y]=ad_{g}[X,Y]$ $\blacksquare$
+		\end{itemize}
+		\item This means that on overlaps, the local field strengths transform under the adjoint rep of $G$
+		\item Now consider how curvature transforms under gauge transformation $\Phi\,:\,P\to P$
+		\item Using the structure equation of $\omega^{\Phi}=(\Phi^{*})^{-1}\omega$, we find that it transforms as
+		\begin{equation}
+			\Omega^{\Phi}=(\Phi^{*})^{-1}\Omega
+		\end{equation}
+		\item In terms of local field strengths, we find that the theorem above holds similarly:
+		\begin{equation}
+			F_{\alpha}^{\Phi}=ad_{\Phi_{\alpha}}\circ F_{\alpha}
+		\end{equation}
+	\end{itemize}
+	\subsection{Associated Vector Bundles and Basic Forms}
+	\begin{itemize}
+		\item Recall that a representation of a group $G$ on a vector space $V$ is a homomorphism $\rho\,:\,G\to GL(V)$, where $\rho(gh)=\rho(g)\circ\rho(h)$
+		\item Suppose $P\to M$ is a principal $G$-bundle, and $\rho\,:\,G\to GL(V)$ is a representation on a vector space $V$
+		\item We define a right $G$-action on $P\times V$ by $(p,v)\mapsto (pg,\rho(g^{-1})v)$
+		\item This action is free, so the corresponding orbit space
+		\begin{equation}
+			P\times_{\rho}V=(P\times V)/G
+		\end{equation}
+		is a smooth manifold
+		\item $\pi\,:\,P\to M$ defines a projection $\pi_{V}\,:\,P\times_{\rho}V\to M$ by $(p,v)\mapsto \pi(p)$, which is well-defined since $\pi(p)=\pi(pg)$
+		\item $P\times_{\rho}V$ is the total space of the \textbf{associated vector bundle} of the principal $G$-bundle
+		\item The associated bundle inherits a local trivilisation from $P$:
+		\begin{equation}
+			\Psi_{\alpha}^{V}\,:\,\pi_{V}^{-1}(U_{\alpha})\to U_{\alpha}\times V\,\quad\Psi_{\alpha}^{V}(p,v)=(\pi(p),\rho(g_{\alpha}(p))v)
+		\end{equation}
+		\item This is well-defined since it is independent of the representative $(p,v)$ under $(p,v)\sim(pg,\rho(g^{-1})v)$ 
+		\item On the overlaps $U_{\alpha\beta}$, the transition functions $t_{\alpha\beta}\,:\,U_{\alpha\beta}\to GL(V)$ are defined by $\rho(g_{\alpha})=t_{\alpha\beta}\circ\rho(g_{\beta})$, giving 
+		\begin{equation}
+			t_{\alpha\beta}=\rho(g_{\alpha\beta})
+		\end{equation}
+		where $g_{\alpha\beta}\,:\,U_{\alpha\beta}\to G$ are the transition functions of $P$
+		\item This means the transition functions of an associated bundle $P\times_{\rho}V$ are given by the values in a rep $\rho$ on $V$ of the transition functions of the original principal bundle $P$
+		\item This works the other way around too - given the transition functions, we can construct the associated vector bundle
+		\item We now establish a relation between a class of $V$-values forms on $P$ and a class of forms on $M$
+		\item First, a \textbf{basic form} $\bar{\zeta}\in\Omega^{k}(P)$ is both horizontal ($h^{*}\bar{\zeta}=\bar{\zeta}$) and $G$-invariant ($R_{g}^{*}\bar{\zeta}=\bar{\zeta}$)
+		\newcommand{\bz}{\bar{\zeta}}
+		\item \textbf{Lemma:} $\bz\in\Omega^{k}(P)$ is basic iff $\bz=\pi^{*}\zeta$ for some $\zeta\in\Omega^{k}(M)$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item If $\bz=\pi^{*}\zeta$, then for any $v\in\mathfrak{X}(P)$ we have
+			$$
+			(h^{*}\bz)(v)=\bz(hv)=(\pi^{*}\zeta)(hv)=\zeta(\pi_{*}hv)=\zeta(\pi_{*}v)=\bz(v)
+			$$
+			since $\pi_{*}h=\pi_{*}$
+			\item Verifying $G$-invariance:
+			$$
+			R_{g}^{*}\bz=R_{g}^{*}\pi^{*}\zeta=(\pi\circ R_{g})^{*}\zeta=\pi^{*}\zeta=\bz
+			$$
+			since $\pi\circ R_{g}=\pi$
+			\item Conversely, suppose $\bz\in\Omega^{k}(P)$ is basic
+			\item Define $\zeta_{\alpha}=s_{\alpha}^{*}\bz\in\Omega^{k}(U_{\alpha})$, where $s_{\alpha}\,:\,U_{\alpha}\to P$ is a local section
+			\item On non-trivial overlaps $U_{\alpha\beta}\ni m$, we have $s_{\beta}(m)=s_{\alpha}(m)g_{\alpha\beta}(m)=R_{g_{\alpha\beta}(m)}s_{\alpha}(m)$ where $g_{\alpha\beta}$ are the transition functions
+			\item Therefore, for $m\in U_{\alpha\beta}$:
+			$$
+			\begin{aligned}
+				(\zeta_{\beta})_{m}&=s^{*}_{\beta}\bz_{s_{\beta}(m)}=(R_{g_{\alpha\beta}(m)}\circ s_{\alpha})^{*}\bz_{s_{\alpha}(m)g_{\alpha\beta}(m)}\\&=s_{\alpha}^{*}R^{*}_{g_{\alpha\beta}(m)}\bz_{s_{\alpha}(m)g_{\alpha\beta}(m)}\\&=s_{\alpha}^{*}\bz_{s_{\alpha}(m)}=(\zeta_{\alpha})_{m}
+			\end{aligned}
+			$$
+			\item Thus we can glue together the $\zeta_{\alpha}$ to get a globally defined $\zeta\in\Omega^{k}(M)$
+			\item Finally:
+			$$
+			\pi^{*}\zeta=\pi^{*}s_{\alpha}^{*}\bz=(s_{\alpha}\circ\pi)^{*}\bz=(s_{\alpha}\circ\pi)^{*}h^{*}\bz=h^{*}\bz=\bz
+			$$
+			using that $h\circ(s_{\alpha}\circ\pi)_{*}=h$ and we are done $\blacksquare$
+		\end{itemize} 
+		\item This shows that basic forms on $P$ are in 1:1 correspondence with forms on $M$
+		\item We can actually extend this to forms valued in vector space $V$
+		\item Define
+		\begin{equation}
+			\Omega_{G}^{k}(P;V)=\left\{\bz\in\Omega^{k}(P;V)\,|\,h^{*}\bz=\bz,\,R_{g}^{*}\bz=\rho(g^{-1})\circ\bz\right\}
+		\end{equation}
+		which is the set of $V$-values horizontal $k$-forms on $P$ which are $G$-invariant
+		\item Alternatively, consider $\Omega^{k}(M;P\times_{\rho}V)$, which is the set of $k$-forms on $M$ with values in the associated bundle $P\times_{\rho}V$
+		\item We can represent such $k$-forms locally on $M$ by $\zeta_{\alpha}\in\Omega^{k}(U_{\alpha};V)$ such that on overlaps $U_{\alpha\beta}$ they are related by the defining transition functions of the associated bundle:
+		\begin{equation}
+			\zeta_{\alpha}=\rho(g_{\alpha\beta})\circ\zeta_{\beta}
+		\end{equation}
+		\item \textbf{Theorem:} There is an isomorphism
+		\begin{equation}
+			\Omega^{k}_{G}(P;V)\simeq\Omega^{k}(M;P\times_{\rho}V)
+		\end{equation}
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Proof idea: represent elements of $\Omega^{k}(M;P\times_{\rho}V)$ in terms of their local data
+			\item First, let $\bz\in\Omega^{k}_{G}(P;V)$, and again define $\zeta_{\alpha}=s_{\alpha}^{*}\bz\in\Omega^{k}(U_{\alpha};V)$
+			\newcommand{\za}{\zeta_{\alpha}}
+			\newcommand{\zb}{\zeta_{\beta}}
+			\item Arguing analogously to the earlier lemma, we have
+			$$
+			\zb=s_{\alpha}^{*}\bz=s_{\alpha}^{*}R^{*}_{g_{\alpha\beta}}\bz=s_{\alpha}^{*}\rho(g^{-1}_{\alpha\beta})\circ\bz=\rho(g^{-1}_{\alpha\beta})\circ s_{\alpha}^{*}\bz=\rho(g^{-1}_{\alpha\beta})\circ\za
+			$$
+			\item This is equivalent to (5.59), so defines an element $\zeta\in\Omega^{k}(M;P\times_{\rho}V)$
+			\item Conversely, let $\zeta_{\alpha}\in\Omega^{k}(U_{\alpha};V)$ be a set of forms satisfying (5.59)
+			\item Define $\bz_{\alpha}=\rho(g^{-1}_{\alpha})\circ\pi^{*}\za\in\Omega^{k}(\pi^{-1}(U_{\alpha};V)$; on an overlap, we have
+			$$
+			\bz_{\alpha}=\rho(g_{\alpha}^{-1})\circ\pi^{*}\rho(g_{\alpha\beta})\circ\zb=\rho(g^{-1}_{\alpha}g_{\alpha\beta})\circ\pi^{*}\zb=\rho(g_{\beta}^{-1})\circ\pi^{*}\zb=\bz_{\beta}
+			$$
+			\item This means we have a globally defined $\bz\in\Omega^{k}(P;V)$, and we just need to check it is horizontal and $G$-invariant
+			\item For horizontal-ness:
+			$$
+			(h^{*}\bz)(v)=\bz(hv)=\rho(g_{\alpha}^{-1})\circ\za(\pi_{*}hv)=\rho(g_{\alpha}^{-1})\circ\za(\pi_{*}v)=\bz(v)
+			$$
+			for any $v\in\mathfrak{X}(P)$ as required
+			\item For $G$-invariance:
+			$$
+			\begin{aligned}
+				R_{g}^{*}\bz&=\rho((R_{g}^{*}g_{\alpha})^{-1})\circ R_{g}^{*}\pi^{*}\za=\rho(g^{-1}g_{\alpha}^{-1})\circ(\pi\circ R_{g})^{*}\za\\&=\rho(g^{-1}g_{\alpha}^{-1})\circ\pi^{*}\za=\rho(g^{-1})\circ\rho(g_{\alpha}^{-1})\circ\pi^{*}\za=\rho(g^{-1})\circ\bz
+			\end{aligned}
+			$$
+			and we are done $\blacksquare$
+		\end{itemize}
+	\end{itemize}
 \end{document}
