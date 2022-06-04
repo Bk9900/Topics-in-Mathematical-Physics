@@ -2021,4 +2021,220 @@
 			and we are done $\blacksquare$
 		\end{itemize}
 	\end{itemize}
+	\subsection{Yang-Mills Theory}
+	\begin{itemize}
+		\item Yang-Mills (YM) theory is a nonlinear generalisation of Maxwell's equations
+		\item Let $P\xrightarrow{\pi}M$ be a principal $G$-bundle, with a connection defined by local gauge potentials $A_{\alpha}\in\Omega^{1}(U_{\alpha};\mathfrak{g})$
+		\item We have local field strengths $F_{\alpha}\in\Omega^{2}(U_{\alpha};\mathfrak{g})$, which are equivalent to globally defined $F_{A}\in\Omega^{2}(M;ad\,P)$
+		\item Also recall the Bianchi identity:
+		\begin{equation}
+			d_{A}F_{A}=0
+		\end{equation}
+		\item The \textbf{Yang-Mills equation} on any pseudo-Riemannian $(M,g)$ is
+		\begin{equation}
+			d_{A}\star F_{A}=0
+		\end{equation}
+		where $d_{A}$ is the exterior covariant derivative, and $\star$ is the Hodge star operator extended to $\Omega^{k}(M;P\times_{\rho}V)$
+		\item We can write this locally as
+		\begin{equation}
+			d_{A}\star F_{\alpha}=d\star F_{\alpha}+[A_{\alpha},\star F_{\alpha}]=0
+		\end{equation}
+		\item This is derived from a variational principle
+		\item To do this, we first need an inner product on $\Omega^{k}(M;P\times_{\rho}V)$
+		\item To define this, suppose $\langle\dot,\dot\rangle_{V}\,:\,V\times V\to\mathbb{R}$ is an inner product on $V$
+		\item To ensure this inner product glues together properly on overlaps, we insist it is $G$-invariant:
+		\begin{equation}
+			\braket{\rho(g)v,\rho(g)w}_{V}=\braket{v,w}_{V}
+		\end{equation}
+		for all $g\in G$, $v,w\in V$
+		\item Extending this to forms $\zeta\in\Omega^{k}(M;P\times_{\rho}V)$, we first represent such forms locally as $\zeta_{\alpha}\in\Omega^{k}(U_{\alpha};V)$; then, we define $\braket{\zeta_{\alpha},\eta_{\alpha}}\in C^{\infty}(U_{\alpha})$ by
+		\begin{equation}
+			\braket{\zeta_{\alpha},\eta_{\alpha}}=\frac{1}{k!}\braket{(\zeta_{\alpha})_{a_{1}\ldots a_{k}},(\eta_{\alpha})_{b_{1}\ldots b_{k}}}_{V}g^{a_{1}b_{1}}\ldots g^{a_{k}b_{k}}
+		\end{equation}
+		\item On overlaps, we therefore have
+		\begin{equation}
+			\braket{\zeta_{\alpha},\eta_{\alpha}}=\braket{\rho(g_{\alpha\beta})\circ\zeta_{\beta},\rho(g_{\alpha\beta})\circ\eta_{\beta}}=\braket{\zeta_{\beta},\eta_{\beta}}
+		\end{equation}
+		and so we can define the global $\braket{\zeta,\eta}\in C^{\infty}(M)$, and hence an inner product on $\Omega^{k}(M;P\times_{\rho}V)$
+		\item Note that a $G$-invariant inner product on $V$ doesn't always exist
+		\item For the adjoint bundle $ad\,P=P\times_{ad}\mathfrak{g}$, we need an $ad$-invariant inner product on $\mathfrak{g}$, so $\braket{ad_{g}X,ad_{g}Y}=\braket{X,Y}$ for all $X,Y\in\mathfrak{g}$ and $g\in G$
+		\item To do this, we first note the useful identity: set $g=\exp(tZ)$, and then differentiating $\braket{ad_{\exp(tZ)}X,ad_{\exp(tZ)}Y}=\braket{X,Y}$ at $t=0$ implies
+		\begin{equation}
+			\braket{ad_{*Z}X,Y}+\braket{X,ad_{*Z}Y}=0
+		\end{equation}
+		\item Therefore, by an earlier lemma we have
+		\begin{equation}
+			\braket{[X,Z],Y}=\braket{X,[Y,Z]},\quad\forall X,Y,Z\in\mathfrak{g}
+		\end{equation}
+		\item For semi-simple Lie algebras (see SoPF notes), it turns out a negative multiple of the \textbf{Killing form} $\kappa(X,Y)=\text{Tr}\,ad_{X}ad_{Y}$ is an $ad$-invariant inner product, and it is positive definite if $G$ is compact
+		\item Compact Lie algebras include important examples like $G=SU(n)$, so we just take all our groups of interest to be compact and hence the inner product on $V$ to be positive definite
+		\item We now define the notation $\text{Tr}(\zeta_{\alpha}\wedge \eta_{\alpha})=\zeta_{\alpha}^{i}\wedge\eta_{\alpha}^{i}\braket{e_{i},e_{j}}$ for $\zeta_{\alpha}\in\Omega^{k}(U_{\alpha};V)$ and $\eta_{\alpha}\in\Omega^{k'}(U_{\alpha};V)$ where $\zeta_{\alpha}=\zeta_{\alpha}^{i}e_{i}$ for a basis $\{e_{i}\}$ of $V$
+		\item On overlaps $U_{\alpha\beta}$, we get $\text{Tr}(\zeta_{\alpha}\wedge\eta_{\alpha})=\text{Tr}(\zeta_{\beta}\wedge\eta_{\beta})$
+		\item We therefore have a globally defined form $\text{Tr}(\zeta\wedge\eta)\in\Omega^{k+k'}(M)$ for the corresponding global $\zeta\in\Omega^{k}(M;P\times_{\rho}V)$ and $\eta\in\Omega^{k'}(M;P\times_{\rho}V)$
+		\item Notably:
+		\begin{equation}
+			\text{Tr}(\zeta\wedge\star\eta)=\braket{\zeta,\eta}\text{dvol}
+		\end{equation}
+		for $\zeta,\eta\in\Omega^{k}(M;P\times_{\rho}V)$ by definition of $\star$
+		\item For $ad\,P$, $ad$-invariance then implies
+		\begin{equation}
+			\text{Tr}([\zeta,\zeta']\wedge\zeta'')=\text{Tr}(\zeta\wedge[\zeta',\zeta'']),\quad\forall\zeta,\zeta',\zeta''\in\Omega^{k}(M;ad\,P)
+		\end{equation}
+		\item We now finally get to the definition of the \textbf{Yang-Mills functional}, which is
+		\begin{equation}
+			S_{YM}=\int_{M}|F_{A}|^{2}\text{dvol}
+		\end{equation}
+		where $F_{A}\in\Omega^{2}(M;ad\,P)$ is the curvature of a connection, and $|F_{A}|^{2}=\braket{F_{A},F_{A}}\in C^{\infty}(M)$ 
+		\item Note that $F_{\alpha}$ depends on local sections $s_{\alpha}\,:\,U_{\alpha}\to\pi^{-1}(U_{\alpha})$, but it can be shown that $S_{YM}$ does \emph{not}
+		\item It follows that $S_{YM}$ also does not depend on choice of local trivilisation, and so it only depends on the connection
+		\item Defining the space of connections $\mathcal{A}$, we therefore have $S_{YM}\,:\,\mathcal{A}\to\mathbb{R}$
+		\item \textbf{Theorem:} $S_{YM}$ is gauge invariant
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item In a trivilisation, a gauge transformation is described locally by $\Phi_{\alpha}\,:\,U_{\alpha}\to G$
+			\item The field strengths transform as $F_{\alpha}^{\Phi}=ad_{\Phi_{\alpha}}\circ F_{\alpha}$, so by $ad$-invariance of the inner product, $\braket{F^{\Phi},F^{\Phi}}=\braket{F,F}$ and we are done $\blacksquare$
+		\end{itemize}
+		\item Note this really means $S_{YM}\,:\,\mathcal{A}/\mathcal{G}\to \mathbb{R}$, where the quotient is defined by equivalence under the group of gauge transformations $\mathcal{G}$
+		\item Recall that $\mathcal{A}$ is affine, so if $A\in\mathcal{A}$ we have a curve $A+t\tau$ in the space of connections where $t\in\mathbb{R}$ and $\tau\in\Omega^{1}(M;ad\,P)$
+		\item We say that $A$ is a \textbf{critical point} of $S_{YM}$ if for all $\tau\in\Omega^{1}(M;ad\,P)$ with compact support:
+		\begin{equation}
+			\left.\frac{d}{dt}S_{YM}(A+t\tau)\right\rvert_{t=0}=0
+		\end{equation}
+		\item \textbf{Theorem:} A connection is a critical point of $S_{YM}$ iff it satisfies the YM equation
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item Working locally, we have $F_{A}=dA+\frac{1}{2}[A,A]$ (dropping explicit $\alpha$ labels)
+			\item This means:
+			$$
+			F_{A+t\tau}=d(A+t\tau)+\tfrac{1}{2}[A+t\tau,A+t\tau]=F_{A}+td_{A}\tau+\tfrac{1}{2}t^{2}[\tau,\tau]
+			$$
+			using $[\tau,A]=[A,\tau]$ and $d_{A}\tau=d\tau+[A,\tau]$
+			\item Therefore:
+			$$
+			|F_{A+t\tau}|^{2}=|F_{A}+td_{A}\tau+\mathcal{O}(t^{2})|^{2}=|F_{A}|^{2}+2t\braket{d_{A}\tau,F_{A}}+\mathcal{O}(t^{2})
+			$$
+			\item Using (5.69), we then get
+			$$
+			\begin{aligned}
+				\left.\frac{d}{dt}S_{YM}(A+t\tau)\right\rvert_{t=0}&=2\int_{M}\braket{d_{A}\tau,F_{A}}\text{dvol}=2\int_{M}\text{Tr}(d_{A}\tau\wedge\star F_{A})\\&=2\int_{M}\text{Tr}(d\tau\wedge\star F_{A})+\text{Tr}([A,\tau]\wedge\star F_{A})\\&=2\int_{M}\text{Tr}(\tau\wedge d\star F_{A})+\text{Tr}(\tau\wedge [A,\star F_{A}])\\&=2\int_{M}\text{Tr}(\tau\wedge d_{A}\star F_{A})
+			\end{aligned}
+			$$
+			where on line 3 we used $d\text{Tr}(\tau\wedge\star F_{A})=\text{Tr}(d\tau\wedge\star F_{A})-\text{Tr}(\tau\wedge d\star F_{A})$ and Stokes' theorem to get rid of the boundary term, and $\text{Tr}([\tau,A]\wedge\star F_{A})=\text{Tr}(\tau\wedge[A,\star F_{A}])$
+			\item The above variation has to vanish for all $\tau$, so we get that the $YM$ equation must be satisfied $\blacksquare$
+		\end{itemize}
+	\end{itemize}
+	\subsection{Instantons}
+	\begin{itemize}
+		\item An \textbf{instanton} is a localised solution to the YM equations that are `existing at an instant of time'
+		\item They are defined on \emph{Riemannian} manifolds $(M,g)$, so the signature $s=0$
+		\item We take $(M,g)$ to have dimension $n=4$, so the Hodge star acts as $\star\,:\,\Omega^{2}(M)\to\Omega^{2}(M)$ and satisfies $\star^{2}=1$
+		\item This means we can decompose 2-forms pointwise as
+		\begin{equation}
+			\Omega^{2}(M)=\Omega^{2}_{+}(M)\oplus\Omega_{-}^{2}(M)
+		\end{equation}
+		where $\Omega_{\pm}(M)$ are the $\star=\pm 1$ eigenspaces respectively
+		\item We say $\omega\in\Omega^{2}(M)$ is \textbf{self-dual} (SD) if $\omega\in\Omega_{+}^{2}(M)$, so $\star\omega=\omega$, and it is \textbf{anti self-dual} (ASD) if $\omega\in\Omega_{-}^{2}(M)$, so $\star\omega=-\omega$
+		\item Any 2-form $\omega\in\Omega^{2}(M)$ can be uniquely decomposed into a sum of a SD and ASD 2-form $\omega=\omega_{+}+\omega_{-}$ where $\omega_{\pm}\in\Omega^{2}_{\pm}(M)$
+		\item Also:
+		\begin{equation}
+			\begin{aligned}
+				\braket{\omega_{+},\omega_{-}}\text{dvol}&=\omega_{+}\wedge\star\omega_{-}=-\omega_{+}\wedge\omega_{-}=-\omega_{-}\wedge\omega_{+}\\&=-\omega_{-}\wedge\star\omega_{+}=-\braket{\omega_{-},\omega_{+}}\text{dvol}=-\braket{\omega_{+}\omega_{-}}\text{dvol}
+			\end{aligned}
+		\end{equation}
+		and so $\braket{\omega_{+},\omega_{-}}=0$, meaning the decomposition is orthogonal wrt the inner product on forms
+		\item We can do the same decomposition of bundle-valued 2-forms on $M$ so long as we have an inner product on $V$
+		\item Given $F_{A}\in\Omega^{2}(M;ad\,P)$ associated to the curvature of a connection on a principal bundle, we can decompose $F_{A}=F_{A}^{+}+F_{A}^{-}$, where $\star F_{A}^{\pm}=\pm F_{A}^{\pm}$
+		\item This means
+		\begin{equation}
+			|F_{A}|^{2}=\braket{F_{A}^{+}+F_{A}^{-},F_{A}^{+}+F_{A}^{-}}=|F_{A}^{+}|^{2}+|F_{A}^{-}|^{2}
+		\end{equation}
+		using orthogonality of the SD and ASD parts of $F_{A}$
+		\item On the other hand:
+		\newcommand{\fap}{F_{A}^{+}}
+		\newcommand{\famm}{F_{A}^{-}}
+		\begin{equation}
+			\begin{aligned}
+				\text{Tr}(F_{A}\wedge F_{A})&=\text{Tr}(F_{A}^{+}\wedge F_{A}^{+})+2\text{Tr}(\fap\wedge\famm)+\text{Tr}(\fam\wedge\famm)\\&=\text{Tr}(\fap\wedge\star\fap)-2\text{Tr}(\fap\wedge\star\famm)-\text{Tr}(\fam\wedge\star\famm)\\&=(|\fap|^{2}-|\famm|^{2})\text{dvol}
+			\end{aligned}
+		\end{equation}
+		using orthogonality again
+		\item Therefore, defining
+		\begin{equation}
+			c=\int_{M}\text{Tr}(F_{A}\wedge F_{A})
+		\end{equation}
+		we can write 
+		\begin{equation}
+			S_{YM}=\mp c+2\int_{M}|F_{A}^{\pm}|^{2}\text{dvol}
+		\end{equation}
+		\item We therefore deduce the following important result
+		\item \textbf{Theorem:} The YM action on a 4-dimensional Riemannian manifold satisfies
+		\begin{equation}
+			S_{YM}\geq |c|
+		\end{equation}
+		with equality iff $\fap=0$ or $\famm=0$
+		\item \textbf{Proof:}
+		\begin{itemize}
+			\item We see instantly that $S_{YM}=-c$ iff $\fap=0$, which implies 
+			$$
+			c=-\int_{M}|\famm|^{2}<0
+			$$
+			giving $S_{YM}=|c|$
+			\item Similarly, $S_{YM}=c$ iff $\famm=0$ and the result follows similarly $\blacksquare$
+		\end{itemize}
+		\item A connection which is (A)SD in the sense $F_{A}=F_{A}^{\pm}$ is called an \textbf{instanton}
+		\item An instanton is clearly a solution to the YM equation by the Bianchi identity:
+		\begin{equation}
+			d_{A}\star F_{A}=\pm d_{A}F_{A}=0
+		\end{equation}
+		\item This means instantons are solutions to the YM equation which are global minimisers of the YM action
+		\item The instanton equation $F_{A}^{\pm}=0$ is a first order PDE for the connection $A$, which implies the YM equations (which are a second order PDE for $A$)
+		\item It is therefore simpler to find instanton solutions
+		\item Now, we assume $M$ is compact in what follows
+		\item Define $\Theta=\text{Tr}(F_{A}\wedge F_{A})\in\Omega^{4}(M)$; since $n=4$ this is a top-ranked form, and so $d\Theta=0$
+		\item Hence this defines a cohomology class $[\Theta]\in H_{dR}^{4}(M)$ and $c=([\Theta],[M])=\int_{M}\Theta$ where $[M]\in H_{4}(M)$ is the fundamental homology class
+		\item It turns out $c$ is independent of the connection on $P$ and is a topological invariant of the bundle called the \textbf{characteristic number}
+		\item To see this, let $A_{0},A_{1}\in\mathcal{A}$ be connections, and consider the curve $A_{t}=A_{0}+t\tau$ where $\tau=A_{1}-A_{0}\in\Omega^{1}(M;ad\,P)$ and $t\in [0,1]$
+		\item By the same logic as in the proof of connections being critical points of $S_{YM}$ iff they satisfy the YM equation, we have $F_{A_{t}}=F_{A_{0}}+td_{A_{0}}\tau+\frac{1}{2}t^{2}[\tau,\tau]$
+		\item Therefore:
+		\begin{equation}
+			\frac{d}{dt}F_{A_{t}}=d_{A_{0}}\tau+t[\tau,\tau]=d_{A_{t}}\tau
+		\end{equation}
+		\item This gives:
+		\begin{equation}
+			\begin{aligned}
+				\frac{d}{dt}\Theta_{t}&=2\text{Tr}\left(\frac{d}{dt}F_{A_{t}}\wedge F_{A_{t}}\right)=2\text{Tr}(d_{A_{t}}\tau\wedge F_{A_{t}})\\&=2\text{Tr}(d\tau\wedge F_{A_{t}}+[A_{t},\tau]\wedge F_{A_{t}})\\&=2\text{Tr}(d\tau\wedge F_{A_{t}}+\tau\wedge[A_{t},F_{A_{t}}])\\&=2\text{Tr}(d\tau\wedge F_{A_{t}}-\tau\wedge dF_{A_{t}})\\&=d\text{Tr}(\tau\wedge F_{A_{t}})
+			\end{aligned}
+		\end{equation}
+		using the Bianchi identity in line 4
+		\item Therefore:
+		\begin{equation}
+			\Theta_{1}-\Theta_{0}=d\left(2\int_{0}^{1}\text{Tr}(\tau\wedge F_{A_{t}})dt\right)
+		\end{equation}
+		so $\Theta_{0}$ and $\Theta_{1}$ define the same cohomology class $[\Theta_{0}]=[\Theta_{1}]$
+		\item By Stokes', $c=\int_{M}\Theta_{0}=\int_{M}\Theta_{1}$ is independent of the connection
+		\item For the adjoint bundle $ad\,P$, the \textbf{Pontrjagin class} is 
+		\begin{equation}
+			p_{1}(ad\,P)=\frac{1}{4\pi^{2}}\text{Tr}(F_{A}\wedge F_{A})\in H^{4}(M,\mathbb{R})
+		\end{equation}
+		and the \textbf{Pontrjagin number} is
+		\begin{equation}
+			p_{1}(ad\,P)[M]=\frac{1}{4\pi^{2}}\int_{M}\text{Tr}(F_{A}\wedge F_{A})
+		\end{equation}
+		\item It can be shown that the Pontrjagin number is an integer
+		\item This is a topological invariant of the bundle, in this context called the \textbf{instanton number} $k\in\mathbb{Z}$
+		\item So $c=4\pi^{2}k$, and 
+		\begin{equation}
+			S_{YM}\geq 4\pi^{2}|k|
+		\end{equation}
+		so the lower bound of the YM action is a topological invariant of the underlying bundle
+		\item \textbf{Example:} The BPST instanton
+		\begin{itemize}
+			\item The BPST instanton is the simplest non-trivial example of an instanton
+			\item It is a connection on a principal $SU(2)$-bundle over $\mathbb{R}^{4}$ with $k=1$
+			\item It is a 5-parameter family of solutions where the parameters are the coordinates of its `centre' in $\mathbb{R}^{4}$ and a scale
+			\item It has finite $S_{YM}$ but not compact support, and by `adding the point at infinity' it extends to an instanton on $S^{4}=\mathbb{R}^{4}\cup\{\infty\}$
+			\item The total space of this $SU(2)$-bundle over $S^{4}$ turns out to be $S^{7}$
+			\item We can study the \textbf{moduli space} (i.e. parameter space) of instantons as a geometric object in its own right - for $SU(2)$-bundles over $S^{4}$, the moduli space is $8k-3$ dimensional, so for $k=1$ the BPST instanton is the only instanton solution
+		\end{itemize}
+	\end{itemize}
 \end{document}

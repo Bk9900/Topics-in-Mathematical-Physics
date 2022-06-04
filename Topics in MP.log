@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 22.1) (format=lualatex 2022.2.13)  28 MAR 2022 15:00
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 22.1) (format=lualatex 2022.2.13)  7 APR 2022 12:17
  restricted system commands enabled.
 **"Topics in MP.tex"
 ("./Topics in MP.tex"
@@ -1393,20 +1393,41 @@ m/it/12 V$\T1/lmr/m/n/12 -values forms on $\OML/cmm/m/it/12 P$ \T1/lmr/m/n/12 an
 d a class of forms 
  []
 
-[48] [49] ("./Topics in MP.aux")
+[48] [49]
+Overfull \hbox (18.52095pt too wide) in paragraph at lines 2045--2046
+[]\T1/lmr/m/n/12 To en-sure this in-ner prod-uct glues to-gether prop-erly on ov
+er-laps, we in-sist it is $\OML/cmm/m/it/12 G$\T1/lmr/m/n/12 -invariant:  
+ []
+
+
+Overfull \hbox (21.6192pt too wide) in paragraph at lines 2057--2059
+\T1/lmr/m/n/12 and so we can de-fine the global $[] \OMS/cmsy/m/n/12 2 \OML/cmm
+/m/it/12 C[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M\OT1/cmr/m/n/12 )$\T1/lmr/m/n/12
+ , and hence an in-ner prod-uct on $\OT1/cmr/m/n/12 
+[](\OML/cmm/m/it/12 M\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 P \OMS/cmsy/m/n/12 [] 
+
+ []
+
+[50] [51] [52] [53]
+Overfull \hbox (0.96326pt too wide) in paragraph at lines 2224--2225
+[]\T1/lmr/m/n/12 This is a topo-log-i-cal in-vari-ant of the bun-dle, in this co
+n-text called the \T1/lmr/bx/n/12 in-stan-ton num- 
+ []
+
+[54] [55] ("./Topics in MP.aux")
 Package rerunfilecheck Info: File `"Topics in MP".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 )
 
 Here is how much of LuaTeX's memory you used:
- 39300 strings out of 477794
+ 39338 strings out of 477794
  244180,1977958 words of node,token memory allocated
- 2176 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 402 attribute, 73 glue_spe
-c, 402 attribute_list, 2 write nodes
-   avail lists: 1:15,2:32466,3:32311,4:138,5:684,6:53,7:6672,8:75,9:823,10:4,11:
+ 2404 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 459 attribute, 73 glue_spe
+c, 459 attribute_list, 2 write nodes
+   avail lists: 1:15,2:32352,3:32311,4:138,5:690,6:53,7:6672,8:75,9:823,10:6,11:
 320
- 58360 multiletter control sequences out of 65536+600000
+ 58364 multiletter control sequences out of 65536+600000
  101 fonts using 6155263 bytes
  103i,14n,101p,732b,2401s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/U
@@ -1433,9 +1454,9 @@ c/lm/lmr17.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 lm/lmri12.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/symbols/msam10.pfb><C:/Users/nebka/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Topics in MP.pdf (49 pages, 584638 bytes).
+Output written on Topics in MP.pdf (55 pages, 620262 bytes).
 
-PDF statistics: 597 PDF objects out of 1000 (max. 8388607)
- 271 named destinations out of 1000 (max. 131072)
- 200 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 657 PDF objects out of 1000 (max. 8388607)
+ 305 named destinations out of 1000 (max. 131072)
+ 216 words of extra memory for PDF output out of 10000 (max. 100000000)
 
